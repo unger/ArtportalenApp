@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtportalenApp.Views.EditReportPage"
+             x:Name="currentPage">
+
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Spara" Command="{Binding SaveCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  <StackLayout>
+
+    <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
+
+    <TableView Intent="Form" x:Name="tableView">
+      <TableRoot>
+        <TableSection>
+          <TextCell x:Name="taxonCell" Text="Art" Detail="{Binding CurrentReport.TaxonName}" Command="{Binding ChangeTaxonCommand}" StyleId="disclosure"></TextCell>
+          <EntryCell Label="Antal" Text="{Binding CurrentReport.Quantity}" HorizontalTextAlignment="End" Keyboard="Numeric"></EntryCell>
+          <TextCell Text="Lokal" Detail="{Binding CurrentReport.SiteName}" Command="{Binding ChangeSiteCommand}" StyleId="disclosure" />
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Padding="15,0,8,0" Orientation="Horizontal">
+                <Label Text="Start" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                <DatePicker Date="{Binding CurrentReport.StartDate}" />
+                <TimePicker Time="{Binding CurrentReport.StartTime}" />
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Padding="15,0,8,0" Orientation="Horizontal">
+                <Label Text="Slut" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                <DatePicker Date="{Binding CurrentReport.EndDate}" />
+                <TimePicker Time="{Binding CurrentReport.EndTime}" />
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </TableSection>
+        <TableSection Title="Kommentar">
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Padding="8,0,8,0">
+                <Editor Text="{Binding CurrentReport.Comment}"/>
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </TableSection>
+        <TableSection Title="Övrigt">
+          <SwitchCell Text="Osäker artbestämning" On="{Binding CurrentReport.Unsure}"/>
+          <SwitchCell Text="Ej återfunnen" On="{Binding CurrentReport.NotRecovered}"/>
+        </TableSection>
+      </TableRoot>
+    </TableView>
+  </StackLayout>
+
+
+
+</ContentPage>

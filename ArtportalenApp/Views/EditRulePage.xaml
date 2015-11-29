@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtportalenApp.Views.EditRulePage">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Spara" Command="{Binding SaveCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout>
+
+    <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
+    <Button Text="temp" Command="{Binding TempCommand}"></Button>
+
+    <TableView Intent="Form">
+      <TableRoot>
+        <TableSection>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid Padding="15,0,8,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="100" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Namn" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+                <Entry Text="{Binding CurrentRule.Name}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Placeholder="Namn" />
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid Padding="15,0,8,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="100" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Prefix" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+                <Picker Grid.Row="0" Grid.Column="1" SelectedIndex="{Binding CurrentRule.PrefixIndex}" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                  <Picker.Items>
+                    <x:String>0</x:String>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                    <x:String>7</x:String>
+                    <x:String>8</x:String>
+                    <x:String>Alla</x:String>
+                  </Picker.Items>
+                </Picker>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+          <TextCell Text="{Binding CurrentRule.TaxonCount, StringFormat='Arter ({0})'}" Detail="{Binding CurrentRule.TaxonSummary}" Command="{Binding ChangeTaxonsCommand}" StyleId="disclosure" />
+          <TextCell Text="{Binding CurrentRule.MunicipalityCount, StringFormat='Kommun ({0})'}" Detail="{Binding CurrentRule.MunicipalitySummary}" Command="{Binding ChangeMunicipalityCommand}" StyleId="disclosure" />
+          <TextCell Text="{Binding CurrentRule.ProvinceCount, StringFormat='Landskap ({0})'}" Detail="{Binding CurrentRule.ProvinceSummary}" Command="{Binding ChangeProvinceCommand}" StyleId="disclosure" />
+<!--
+          <ViewCell>
+            <ViewCell.View>
+              <Grid Padding="15,0,8,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="90" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding CurrentRule.TaxonCount, StringFormat='Arter ({0})'}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
+                  <Label Text="{Binding CurrentRule.TaxonSummary}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small" LineBreakMode="TailTruncation" />
+                  <Button Text="Ändra" Command="{Binding ChangeTaxonsCommand}" HorizontalOptions="End" />
+                </StackLayout>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid Padding="15,0,8,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="90" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding CurrentRule.MunicipalityCount, StringFormat='Kommun ({0})'}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
+                  <Label Text="{Binding CurrentRule.MunicipalitySummary}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="Small" LineBreakMode="TailTruncation" />
+                  <Button Text="Ändra" Command="{Binding ChangeMunicipalityCommand}" HorizontalOptions="End" />
+                </StackLayout>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid Padding="15,0,8,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="90" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding CurrentRule.ProvinceCount, StringFormat='Landskap ({0})'}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
+                  <Label Text="{Binding CurrentRule.ProvinceSummary}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="Small" LineBreakMode="TailTruncation" />
+                  <Button Text="Ändra" Command="{Binding ChangeProvinceCommand}" HorizontalOptions="End" />
+                </StackLayout>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+-->
+          <SwitchCell Text="Aktiv" On="{Binding CurrentRule.IsActive}"/>
+
+        </TableSection>
+      </TableRoot>
+
+    </TableView>
+
+  </StackLayout>
+
+</ContentPage>

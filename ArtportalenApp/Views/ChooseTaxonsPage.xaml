@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ArtportalenApp.Controls;assembly=ArtportalenApp"
+             x:Class="ArtportalenApp.Views.ChooseTaxonsPage">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Klar" Command="{Binding DoneCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  <StackLayout>
+
+    <SearchBar Placeholder="Sök" Text="{Binding SearchText}"/>
+
+    <ScrollView Orientation="Horizontal" Padding="15,0,15,0">
+      <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,10">
+        <controls:SegmentedControl HorizontalOptions="Center" SelectedValue="{Binding TaxonFilter}">
+          <controls:SegmentedControl.Children>
+            <controls:SegmentedControlOption Text="Alla" Value="" />
+            <controls:SegmentedControlOption Text="Valda" Value="valda" />
+            <controls:SegmentedControlOption Text="Ej valda" Value="ejvalda" />
+            <controls:SegmentedControlOption Text="0-1" Value="0" />
+            <controls:SegmentedControlOption Text="2-3" Value="1" />
+            <controls:SegmentedControlOption Text="4-5" Value="2" />
+            <controls:SegmentedControlOption Text="6-7" Value="3" />
+            <controls:SegmentedControlOption Text="8-9" Value="4" />
+          </controls:SegmentedControl.Children>
+        </controls:SegmentedControl>
+      </StackLayout>
+    </ScrollView>
+
+    <ListView ItemsSource="{Binding FilteredTaxons}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <SwitchCell Text="{Binding Name}" On="{Binding Selected}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+  
+</ContentPage>

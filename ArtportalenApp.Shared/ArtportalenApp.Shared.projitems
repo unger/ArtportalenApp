@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>baab620e-13d5-4a05-8134-8db823e019b3</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ArtportalenApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Appstart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseInstallation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseSession.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ParseCurrentUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseSighting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseSite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseTaxon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ApParseUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParseErrorHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\AccountStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\ReportStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\RuleStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\SightingStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\SiteStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\TaxonStorage.cs" />
+  </ItemGroup>
+</Project>

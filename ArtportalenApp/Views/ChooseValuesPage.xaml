@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ArtportalenApp.Controls;assembly=ArtportalenApp"
+             x:Class="ArtportalenApp.Views.ChooseValuesPage">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Klar" Command="{Binding DoneCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  <StackLayout>
+
+    <SearchBar Placeholder="Sök" Text="{Binding SearchText}"/>
+
+    <ListView ItemsSource="{Binding FilteredValues}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <SwitchCell x:Name="textCell" Text="{Binding Name}" On="{Binding Selected}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+  
+</ContentPage>

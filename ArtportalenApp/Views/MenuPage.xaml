@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtportalenApp.Views.MenuPage"
+             Title="Meny">
+<StackLayout>
+
+
+  <TableView Intent="Menu">
+    <TableRoot>
+      <TableSection>
+        <TextCell StyleId="disclosure" Text="Observationer" Command="{Binding SightingsCommand}"/>
+        <TextCell StyleId="disclosure" Text="Lokaler" Command="{Binding SitesCommand}"/>
+        <TextCell StyleId="disclosure" Text="Rapportera" Command="{Binding ReportsCommand}"/>
+        <TextCell StyleId="disclosure" Text="Regler" Command="{Binding RulesCommand}"/>
+      </TableSection>
+      <TableSection>
+        <TextCell StyleId="disclosure" Text="Enheter" Command="{Binding SessionsCommand}"/>
+        <TextCell StyleId="disclosure" Text="Logga ut" Command="{Binding LogOutCommand}"/>
+      </TableSection>
+    </TableRoot>
+  </TableView>
+
+
+</StackLayout>
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtportalenApp.Views.ReportsPage"
+             x:Name="currentPage">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Lägg till" Command="{Binding AddCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  
+  <ListView ItemsSource="{Binding GroupedReports}"
+            x:Name="SightingsListView"
+            VerticalOptions="FillAndExpand"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            IsGroupingEnabled="True">
+    <ListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Padding="10" BackgroundColor="Gray">
+              <Label Text="{Binding Key}" FontSize="20" TextColor="White" />
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.GroupHeaderTemplate>
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding TaxonName}"
+                  Detail="{Binding SummaryRow}"
+                  StyleId="disclosure"
+                  Command="{Binding BindingContext.EditCommand, Source={x:Reference currentPage}}"
+                  CommandParameter="{Binding .}">
+          <TextCell.ContextActions>
+            <MenuItem
+                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference currentPage}}"
+                CommandParameter="{Binding .}"
+                Text="Ta bort"
+                IsDestructive="True"/>
+          </TextCell.ContextActions>
+        </TextCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+</ContentPage>

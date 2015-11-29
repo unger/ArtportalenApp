@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtportalenApp.Views.LogInPage">
+  
+  <StackLayout Padding="15">
+    
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+      </Grid.RowDefinitions>
+      <Label Text="E-post" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+      <Entry Text="{Binding Email}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Placeholder="email@server.se" Keyboard="Email" />
+
+      <Label Text="Lösenord" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" />
+      <Entry Text="{Binding Password}" IsPassword="True" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Placeholder="Lösenord" />
+    </Grid>
+
+    <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
+
+    <StackLayout VerticalOptions="FillAndExpand">
+      <Button Text="Logga in" Command="{Binding LogInCommand}" Style="{StaticResource buttonPrimary}" />
+      <Button Text="Skapa konto" Command="{Binding SignUpCommand}" Style="{StaticResource button}" />
+    </StackLayout>
+
+  </StackLayout>
+</ContentPage>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ArtportalenApp.Controls;assembly=ArtportalenApp"
+             x:Class="ArtportalenApp.Views.SightingsPage"
+             x:Name="sightingsPage"
+             Title="{Binding Title}">
+
+  <StackLayout>
+
+    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,10">
+      <controls:SegmentedControl HorizontalOptions="Center" SelectedValue="{Binding DaysFilter}">
+        <controls:SegmentedControl.Children>
+          <controls:SegmentedControlOption Text="Senaste" Value="" />
+          <controls:SegmentedControlOption Text="Idag" Value="today" />
+          <controls:SegmentedControlOption Text="Igår" Value="yesterday" />
+          <controls:SegmentedControlOption Text="Äldre" Value="older" />
+        </controls:SegmentedControl.Children>
+      </controls:SegmentedControl>
+    </StackLayout>
+
+    <Label Text="Inga obsar" HorizontalOptions="Center" IsVisible="{Binding HasNoSightings}"/>
+    
+    <ListView ItemsSource="{Binding GroupedSightings}" 
+              HasUnevenRows="True" 
+              x:Name="SightingsListView"
+              VerticalOptions="FillAndExpand"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding RefreshCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+              IsGroupingEnabled="True">
+      <ListView.GroupHeaderTemplate>
+        <DataTemplate>
+          <ViewCell x:Name="viewCell">
+            <ViewCell.View>
+              <StackLayout Padding="10" BackgroundColor="Gray">
+                <Label Text="{Binding Key}" FontSize="20" TextColor="White" />
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.GroupHeaderTemplate>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell x:Name="viewCell">
+            <ViewCell.View>
+              <StackLayout Spacing="0" Padding="10,0,10,10">
+                <StackLayout Orientation="Horizontal">
+                  <StackLayout Padding="0,10,0,0" IsVisible="{Binding Mode=OneWay, Source={x:Reference sightingsPage}, Path=BindingContext.OrderByLatest}">
+                    <Label Text="{Binding TaxonName}" FontAttributes="Bold" HorizontalOptions="StartAndExpand" />
+                  </StackLayout>
+                  <Label Text="{Binding CreatedAtString, StringFormat='Rapporterad: {0}'}" FontSize="Micro" TextColor="#aaa" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+                <Label Text="{Binding SummaryRow}" />
+                <StackLayout Padding="15,0,0,0">
+                  <Label Text="{Binding Comment}" LineBreakMode="WordWrap" IsVisible="{Binding HasComment}" />
+                </StackLayout>
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <Label Text="Källa: Artportalen, ArtDatabanken SLU" FontSize="Micro" HeightRequest="15" HorizontalOptions="Center" VerticalOptions="End" />
+  </StackLayout>
+</ContentPage>

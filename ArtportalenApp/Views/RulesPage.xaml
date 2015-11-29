@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArtportalenApp.Views.RulesPage"
+             Title="{Binding Title}"
+             x:Name="rulesPage">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Lägg till" Command="{Binding AddCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  <ListView ItemsSource="{Binding Rules}" 
+            HasUnevenRows="True" 
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            x:Name="RulesListView">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell x:Name="textCell"
+                  Text="{Binding Name}"
+                  Detail="{Binding IsActiveText}"
+                  StyleId="disclosure"
+                  Command="{Binding BindingContext.PreviewCommand, Source={x:Reference rulesPage}}"
+                  CommandParameter="{Binding .}">
+          <TextCell.ContextActions>
+            <MenuItem
+                Command="{Binding BindingContext.EditCommand, Source={x:Reference rulesPage}}"
+                CommandParameter="{Binding .}"
+                Text="Ändra" />
+            <MenuItem
+                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference rulesPage}}"
+                CommandParameter="{Binding .}"
+                Text="Ta bort"
+                IsDestructive="True"/>
+          </TextCell.ContextActions>
+        </TextCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>
