@@ -6,6 +6,6 @@ namespace ArtportalenApp.Interfaces
 {
     public interface ISiteStorage
     {
-        Task<IList<Site>> GetNearbySites(double latitude, double longitude);
+        Task<IList<Site>> GetNearbySites(double latitude, double longitude, string searchText = null);
     }
 }

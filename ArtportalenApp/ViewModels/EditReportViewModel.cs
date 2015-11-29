@@ -12,6 +12,7 @@ namespace ArtportalenApp.ViewModels
         private readonly ITaxonService _taxonService;
         private Command _saveCommand;
         private Command _changeTaxonCommand;
+        private Command _changeSiteCommand;
 
         public EditReportViewModel(IReportStorage reportStorage, ITaxonService taxonService)
         {
@@ -94,6 +95,25 @@ namespace ArtportalenApp.ViewModels
                         poppedAction: vm =>
                         {
                             CurrentReport.Taxon = vm.SelectedTaxon;
+                        });
+                }));
+            }
+        }
+
+        public Command ChangeSiteCommand
+        {
+            get
+            {
+                return _changeSiteCommand ?? (_changeSiteCommand = new Command(async () =>
+                {
+                    await Navigation.PushAsync<ChooseSingleSitePage, ChooseSingleSiteViewModel>(
+                        setAction: async vm =>
+                        {
+                            vm.SelectedSite = CurrentReport.Site;
+                        },
+                        poppedAction: vm =>
+                        {
+                            CurrentReport.Site = vm.SelectedSite;
                         });
                 }));
             }

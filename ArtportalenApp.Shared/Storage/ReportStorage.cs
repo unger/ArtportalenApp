@@ -15,7 +15,7 @@ namespace ArtportalenApp.Storage
         {
             var reports = await new ParseQuery<ApParseSighting>()
                 .Where(x => x.User == ParseUser.CurrentUser)
-                .Where(x => x.SiteId == null)
+                .Where(x => x.SightingId == null)
                 .FindAsync();
 
             return reports.Select(ConvertToReport).ToList();

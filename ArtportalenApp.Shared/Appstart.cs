@@ -57,11 +57,13 @@ namespace ArtportalenApp
             builder.RegisterType<EditRuleViewModel>();
             builder.RegisterType<ChooseTaxonsViewModel>();
             builder.RegisterType<ChooseSingleTaxonViewModel>();
+            builder.RegisterType<ChooseSingleSiteViewModel>();
             builder.RegisterType<ChooseValuesViewModel>();
             builder.RegisterType<SessionsViewModel>();
             builder.RegisterType<SitesViewModel>();
             builder.RegisterType<ReportsViewModel>();
             builder.RegisterType<EditReportViewModel>();
+            
             
 
             builder.Register(x => CrossDeviceInfo.Current).As<IDeviceInfo>();

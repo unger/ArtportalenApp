@@ -9,16 +9,24 @@ namespace ArtportalenApp.Storage
 {
     public class SiteStorage : ISiteStorage
     {
-        public async Task<IList<Site>> GetNearbySites(double latitude, double longitude)
+        public async Task<IList<Site>> GetNearbySites(double latitude, double longitude, string searchText = null)
         {
             var pos = new ParseGeoPoint(latitude, longitude);
-            var sites = await new ParseQuery<ApParseSite>()
-                .WhereNear("location", pos)
-                .Limit(25)
-                .FindAsync();
+            var sitesQuery = new ParseQuery<ApParseSite>()
+                .Limit(25);
 
+            if (!string.IsNullOrEmpty(searchText) && searchText.Length >= 3)
+            {
+                sitesQuery = sitesQuery.Where(s => s.SiteName.Contains(searchText));
+            }
+            else
+            {
+                sitesQuery = sitesQuery.WhereNear("location", pos);
+            }
 
-            return sites.Select(s => ConvertToSite(s, pos)).ToList();
+            return (await sitesQuery.FindAsync())
+                .Select(s => ConvertToSite(s, pos))
+                .ToList();
         }
 
         private Site ConvertToSite(ApParseSite s, ParseGeoPoint p)

@@ -80,6 +80,7 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationCenter.cs" />
     <Compile Include="Services\TaxonService.cs" />
+    <Compile Include="ViewModels\ChooseSingleSiteViewModel.cs" />
     <Compile Include="ViewModels\ChooseSingleTaxonViewModel.cs" />
     <Compile Include="ViewModels\ChooseValuesViewModel.cs" />
     <Compile Include="ViewModels\ChooseTaxonsViewModel.cs" />
@@ -133,6 +134,9 @@
     </Compile>
     <Compile Include="Views\RulesPage.xaml.cs">
       <DependentUpon>RulesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChooseSingleSitePage.xaml.cs">
+      <DependentUpon>ChooseSingleSitePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SitesPage.xaml.cs">
       <DependentUpon>SitesPage.xaml</DependentUpon>
@@ -272,6 +276,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ChooseSingleTaxonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ChooseSingleSitePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
