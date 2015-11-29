@@ -7,5 +7,7 @@ namespace ArtportalenApp.Interfaces
     public interface ITaxonService
     {
         Task<IList<Taxon>> GetTaxons();
+
+        Task<IList<Taxon>> GetSpecies();
     }
 }

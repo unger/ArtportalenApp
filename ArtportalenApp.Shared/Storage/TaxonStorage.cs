@@ -15,6 +15,16 @@ namespace ArtportalenApp.Storage
         public async Task<IList<Taxon>> GetTaxons()
         {
             var taxons = await new ParseQuery<ApParseTaxon>()
+                    .OrderBy(t => t.SortOrder)
+                    .Limit(1000)
+                    .FindAsync();
+
+            return taxons.Select(ConvertToTaxon).ToList();            
+        }
+
+        public async Task<IList<Taxon>> GetSpecies()
+        {
+            var taxons = await new ParseQuery<ApParseTaxon>()
                     .Where(t => t.Type == "Art")
                     .OrderBy(t => t.SortOrder)
                     .Limit(1000)

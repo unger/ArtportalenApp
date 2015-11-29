@@ -20,6 +20,11 @@ namespace ArtportalenApp.Services
         public Task<IList<Taxon>> GetTaxons()
         {
             return _taxonStorage.GetTaxons();
-        } 
+        }
+
+        public Task<IList<Taxon>> GetSpecies()
+        {
+            return _taxonStorage.GetSpecies();
+        }
     }
 }

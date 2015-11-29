@@ -12,7 +12,7 @@ namespace ArtportalenApp.ViewModels
 
         public ChooseSingleTaxonViewModel()
         {
-            TaxonFilter = "";
+            TaxonFilter = "Art";
             Title = "Välj art";
         }
 

@@ -13,10 +13,10 @@
 
     <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
 
-    <TableView Intent="Form" x:Name="tableView">
+    <TableView Intent="Form">
       <TableRoot>
         <TableSection>
-          <TextCell x:Name="taxonCell" Text="Art" Detail="{Binding CurrentReport.TaxonName}" Command="{Binding ChangeTaxonCommand}" StyleId="disclosure"></TextCell>
+          <TextCell Text="Art" Detail="{Binding CurrentReport.TaxonName}" Command="{Binding ChangeTaxonCommand}" StyleId="disclosure"></TextCell>
           <EntryCell Label="Antal" Text="{Binding CurrentReport.Quantity}" HorizontalTextAlignment="End" Keyboard="Numeric"></EntryCell>
           <TextCell Text="Lokal" Detail="{Binding CurrentReport.SiteName}" Command="{Binding ChangeSiteCommand}" StyleId="disclosure" />
           <ViewCell>

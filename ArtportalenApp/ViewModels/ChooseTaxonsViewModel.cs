@@ -22,7 +22,7 @@ namespace ArtportalenApp.ViewModels
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var taxons = await taxonService.GetTaxons();
+                var taxons = await taxonService.GetSpecies();
                 Taxons = new ObservableCollection<TaxonItemModel>(taxons.Select(x => new TaxonItemModel { Name = x.Name, Prefix = x.Prefix }).ToList());
 
                 if (Taxons != null)

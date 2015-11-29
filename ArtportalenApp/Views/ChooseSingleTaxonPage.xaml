@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:ArtportalenApp.Controls;assembly=ArtportalenApp"
              x:Class="ArtportalenApp.Views.ChooseSingleTaxonPage"
              x:Name="currentPage">
+
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Avbryt" Priority="0" Command="{Binding DoneCommand}"/>
   </ContentPage.ToolbarItems>
@@ -16,7 +17,6 @@
       <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,10">
         <controls:SegmentedControl HorizontalOptions="Center" SelectedValue="{Binding TaxonFilter}">
           <controls:SegmentedControl.Children>
-            <controls:SegmentedControlOption Text="Alla" Value="" />
             <controls:SegmentedControlOption Text="Arter" Value="Art" />
             <controls:SegmentedControlOption Text="Raser" Value="Underart" />
             <controls:SegmentedControlOption Text="Hybrider" Value="Hybrid" />
