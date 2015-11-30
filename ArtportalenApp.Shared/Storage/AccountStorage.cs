@@ -28,13 +28,13 @@ namespace ArtportalenApp.Storage
 
         public Task SignUp(string fullname, string email, string password)
         {
-            var user = new ParseUser
+            var user = new ApParseUser
             {
                 Email = email,
                 Username = email,
-                Password = password
+                Password = password,
+                Fullname = fullname,
             };
-            user["fullname"] = fullname;
 
             return user.SignUpAsync()
                 .ContinueWith(async t =>
