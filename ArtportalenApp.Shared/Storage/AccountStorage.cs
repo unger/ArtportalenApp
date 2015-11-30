@@ -59,7 +59,11 @@ namespace ArtportalenApp.Storage
                 {
                     if (t.IsFaulted)
                     {
-                        ParseErrorHandler.HandleParseError(t.Exception.InnerException as ParseException);
+                        var handled = ParseErrorHandler.HandleParseError(t.Exception.InnerException as ParseException);
+                        if (!handled)
+                        {
+                            throw t.Exception.InnerException;
+                        }
                     }
                     _notificationCenter.Send(NotificationKeys.CurrentUserChanged, _currentUser);
 

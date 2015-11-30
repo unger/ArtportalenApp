@@ -13,14 +13,19 @@ namespace ArtportalenApp
 {
     public class ParseErrorHandler
     {
-        public static void HandleParseError(ParseException e)
+        public static bool HandleParseError(ParseException e)
         {
-            switch (e.Code)
+            if (e != null)
             {
-                case ParseException.ErrorCode.InvalidSessionToken:
-                    HandleInvalidSessionToken();
-                    break;
+                switch (e.Code)
+                {
+                    case ParseException.ErrorCode.InvalidSessionToken:
+                        HandleInvalidSessionToken();
+                        return true;
+                }
             }
+
+            return false;
         }
 
         private static void HandleInvalidSessionToken()
