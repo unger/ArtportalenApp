@@ -19,6 +19,8 @@ namespace ArtportalenApp.ViewModels
             _reportStorage = reportStorage;
             _taxonService = taxonService;
 
+            IsBusy = false;
+
             PropertyChanged += EditReportViewModel_PropertyChanged;
         }
 

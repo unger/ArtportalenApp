@@ -23,7 +23,8 @@ namespace ArtportalenApp.Storage
 
         public Task DeleteReport(string id)
         {
-            throw new NotImplementedException();
+            var parseReport = ParseObject.CreateWithoutData<ApParseSighting>(id);
+            return parseReport.DeleteAsync();
         }
 
         public async Task SaveReport(Report report)
@@ -32,13 +33,13 @@ namespace ArtportalenApp.Storage
             var startDate = report.StartDate + report.StartTime;
             var endDate = report.EndDate + report.EndTime;
 
-            var startTime = startDate.ToString("HH:mm");
-            if (startTime == "00:00")
+            var startTime = startDate.ToString("HH:mm:ss");
+            if (startTime == "00:00:00")
             {
                 startTime = null;
             }
-            var endTime = endDate.ToString("HH:mm");
-            if (endTime == "00:00")
+            var endTime = endDate.ToString("HH:mm:ss");
+            if (endTime == "00:00:00")
             {
                 endTime = null;
             }
@@ -78,6 +79,7 @@ namespace ArtportalenApp.Storage
             parseSighting.Location = new ParseGeoPoint(report.Site.Latitude, report.Site.Longitude);
             parseSighting.SightingObservers = ParseUser.CurrentUser["fullname"] as string;
             parseSighting.Comment = report.Comment;
+            parseSighting.User = ParseUser.CurrentUser;
 
             await parseSighting.SaveAsync();
         }
@@ -90,9 +92,10 @@ namespace ArtportalenApp.Storage
                 SightingId = s.SightingId,
                 Taxon = new Taxon
                 {
+                    TaxonId = s.TaxonId,
                     Name = s.TaxonName,
                     SortOrder = s.TaxonSortOrder,
-                    TaxonId = s.TaxonId,
+                    Prefix = s.TaxonPrefix,
                 },
                 Quantity = s.Quantity.HasValue ? s.Quantity.ToString() : null,
                 Unsure = s.Unsure,
@@ -105,6 +108,11 @@ namespace ArtportalenApp.Storage
                     SiteName = s.SiteName,
                     Kommun = s.Kommun,
                     Landskap = s.Landskap,
+                    Forsamling = s.Forsamling,
+                    Lan = s.Lan,
+                    Socken = s.Socken,
+                    SiteYCoord = s.SiteYCoord,
+                    SiteXCoord = s.SiteXCoord,
                 },
                 StartDate = s.StartDate.Date,
                 EndDate = s.EndDate.Date,

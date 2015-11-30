@@ -36,11 +36,16 @@ namespace ArtportalenApp.Storage
                 SiteId = s.SiteId,
                 SiteName = s.SiteName,
                 Forsamling = s.Forsamling,
+                Socken = s.Socken,
+                Lan = s.Lan,
+                SiteYCoord = s.SiteYCoord,
+                SiteXCoord = s.SiteXCoord,
                 Kommun = s.Kommun,
                 Landskap = s.Landskap,
                 UseCount = s.UseCount,
+                Latitude = s.Location.Latitude,
+                Longitude = s.Location.Longitude,
                 DistanceKm = s.Location.DistanceTo(p).Kilometers
-
             };
         }
     }

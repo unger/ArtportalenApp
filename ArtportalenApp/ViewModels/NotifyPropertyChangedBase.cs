@@ -35,7 +35,6 @@ namespace ArtportalenApp.ViewModels
                     if (object.Equals(oldvalue, value)) return false;
 
                     // Listen to childupdates, needs some more testing
-                    /*
                     var prefix = propertyName + ".";
                     PropertyChangedEventHandler handler = (sender, e) =>
                     {
@@ -48,7 +47,7 @@ namespace ArtportalenApp.ViewModels
                     if (value is INotifyPropertyChanged)
                     {
                         (value as INotifyPropertyChanged).PropertyChanged += handler;
-                    }*/
+                    }
 
                     _propertyFields[propertyName] = value;
                     RaisePropertyChanged(propertyName);

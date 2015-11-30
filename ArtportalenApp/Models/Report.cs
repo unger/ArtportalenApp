@@ -10,6 +10,14 @@ namespace ArtportalenApp.Models
 {
     public class Report : NotifyPropertyChangedBase
     {
+        public Report()
+        {
+            StartDate = DateTime.Now.Date;
+            EndDate = DateTime.Now.Date;
+            StartTime = DateTime.Now.TimeOfDay;
+            EndTime = DateTime.Now.TimeOfDay;
+        }
+
         public string Id { get; set; }
 
         public long? SightingId
@@ -113,7 +121,7 @@ namespace ArtportalenApp.Models
             {
                 var quantityValid = Quantity != null && Regex.IsMatch(Quantity, @"^\d*$");
 
-                return quantityValid;
+                return quantityValid && Site != null && Taxon != null;
             }
         }
     }
