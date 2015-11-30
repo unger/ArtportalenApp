@@ -27,7 +27,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.magnusunger.artportalen</string>
 	<key>CFBundleVersion</key>
-	<string>28</string>
+	<string>31</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-60@2x.png</string>

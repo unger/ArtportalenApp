@@ -3,12 +3,12 @@
 setlocal enabledelayedexpansion
 
 set platform=Android
-for /f "delims=" %%i in ('..\_tools\VersionBumper.exe android "C:\Projects\GitHub\ArtportalenApp\ArtportalenApp\ArtportalenApp.Droid\Properties\AndroidManifest.xml"') do set BuildVersion=%%i
+for /f "delims=" %%i in ('..\_tools\VersionBumper.exe android "C:\Projects\GitHub\ArtportalenApp\ArtportalenApp.Droid\Properties\AndroidManifest.xml"') do set BuildVersion=%%i
 
 call _include.cmd
 
 
-%MSBuildCustomPath% ..\ArtportalenApp\ArtportalenApp.Droid\ArtportalenApp.Droid.csproj /fl /flp:logfile="%MsBuildLogFile%" /t:Clean,Build,SignAndroidPackage /p:Configuration=Release;Platform=AnyCPU;OutputPath=%tempFolderAbsolute%
+%MSBuildCustomPath% ..\ArtportalenApp.Droid\ArtportalenApp.Droid.csproj /fl /flp:logfile="%MsBuildLogFile%" /t:Clean,Build,SignAndroidPackage /p:Configuration=Release;Platform=AnyCPU;OutputPath=%tempFolderAbsolute%
 
 copy %tempFolder%\*.apk "%outputFolder%" >NUL
 
