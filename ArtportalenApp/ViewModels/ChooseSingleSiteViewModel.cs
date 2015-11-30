@@ -11,14 +11,12 @@ namespace ArtportalenApp.ViewModels
 {
     public class ChooseSingleSiteViewModel : ViewModelBase
     {
-        private readonly IGeolocator _geolocator;
-        private readonly ISiteStorage _siteStorage;
+        private readonly ISiteService _siteService;
         private Command _doneCommand;
 
-        public ChooseSingleSiteViewModel(IGeolocator geolocator, ISiteStorage siteStorage)
+        public ChooseSingleSiteViewModel(ISiteService siteService)
         {
-            _geolocator = geolocator;
-            _siteStorage = siteStorage;
+            _siteService = siteService;
             Title = "Välj lokal";
 
             Device.BeginInvokeOnMainThread(RefreshSites);
@@ -80,22 +78,21 @@ namespace ArtportalenApp.ViewModels
             }
 
             IsBusy = true;
-
-
-            var position = await _geolocator.GetPositionAsync(timeoutMilliseconds: 10000);
+            var lastSearch = SearchText;
 
             try
             {
-                var sites = await _siteStorage.GetNearbySites(position.Latitude, position.Longitude, SearchText);
+                var sites = await _siteService.GetSites(lastSearch);
                 Sites = new ObservableCollection<Site>(sites);
-            }
-            catch (Exception e)
-            {
-
             }
             finally
             {
                 IsBusy = false;
+            }
+
+            if (lastSearch != SearchText)
+            {
+                RefreshSites();
             }
         }
     }

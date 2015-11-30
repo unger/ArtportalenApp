@@ -75,10 +75,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\INavigationService.cs" />
     <Compile Include="Interfaces\ITaxonService.cs" />
+    <Compile Include="Interfaces\ISiteService.cs" />
     <Compile Include="Services\ProvinceService.cs" />
     <Compile Include="Services\MuncipalityService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationCenter.cs" />
+    <Compile Include="Services\SitesService.cs" />
     <Compile Include="Services\TaxonService.cs" />
     <Compile Include="ViewModels\ChooseSingleSiteViewModel.cs" />
     <Compile Include="ViewModels\ChooseSingleTaxonViewModel.cs" />
