@@ -155,11 +155,11 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DeviceInfoReadme.txt" />
-    <Content Include="PluginsHelp\CrossActivityReadme.txt" />
-    <Content Include="PluginsHelp\GeolocatorReadme.txt" />
-    <Content Include="PluginsHelp\PermissionsReadme.txt" />
-    <Content Include="Properties\AndroidManifest.xml" />
+    <None Include="DeviceInfoReadme.txt" />
+    <None Include="PluginsHelp\CrossActivityReadme.txt" />
+    <None Include="PluginsHelp\GeolocatorReadme.txt" />
+    <None Include="PluginsHelp\PermissionsReadme.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\color\segmented_control_text.xml" />
     <AndroidResource Include="Resources\drawable\segmented_control_background.xml" />
     <AndroidResource Include="Resources\drawable\segmented_control_first_background.xml" />

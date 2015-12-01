@@ -11,7 +11,7 @@ using Xamarin;
 namespace ArtportalenApp.Droid
 {
 	//You can specify additional application information in this attribute
-    [Application]
+    [Application(Name = "com.magnusunger.artportalen.MainApplication", Icon = "@drawable/icon")]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
