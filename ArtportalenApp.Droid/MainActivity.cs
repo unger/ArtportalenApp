@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using ArtportalenApp.Configuration;
+using Parse;
 using Xamarin;
 
 namespace ArtportalenApp.Droid
@@ -17,19 +18,6 @@ namespace ArtportalenApp.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            // Xamarin insights
-            Insights.HasPendingCrashReport += (sender, isStartupCrash) =>
-            {
-                if (isStartupCrash)
-                {
-                    Insights.PurgePendingCrashReports().Wait();
-                }
-            };
-            Insights.Initialize(ConfigurationManager.AppSettings.XamarinInsightsApiKey, this);
-
-            // Initialize
-            Appstart.Initialize();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

@@ -3,7 +3,10 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
+using ArtportalenApp.Configuration;
+using ArtportalenApp.Startup;
 using Plugin.CurrentActivity;
+using Xamarin;
 
 namespace ArtportalenApp.Droid
 {
@@ -21,6 +24,21 @@ namespace ArtportalenApp.Droid
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
             //A great place to initialize Xamarin.Insights and Dependency Services!
+
+            // Xamarin insights
+            Insights.HasPendingCrashReport += (sender, isStartupCrash) =>
+            {
+                if (isStartupCrash)
+                {
+                    Insights.PurgePendingCrashReports().Wait();
+                }
+            };
+            Insights.Initialize(ConfigurationManager.AppSettings.XamarinInsightsApiKey, this);
+
+            // Initialize
+            Appstart.Initialize();
+
+            ParseInitializer.Initialize();
         }
 
         public override void OnTerminate()

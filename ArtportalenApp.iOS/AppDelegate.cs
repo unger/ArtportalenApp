@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using ArtportalenApp.Configuration;
 using ArtportalenApp.Interfaces;
+using ArtportalenApp.Startup;
 using Foundation;
 using Parse;
 using TestFairyLib;
@@ -41,6 +42,7 @@ namespace ArtportalenApp.iOS
 
             // Initialize 
             Appstart.Initialize();
+            ParseInitializer.Initialize();
             ParsePushInitialize();
 
             global::Xamarin.Forms.Forms.Init();

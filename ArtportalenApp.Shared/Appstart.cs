@@ -24,22 +24,6 @@ namespace ArtportalenApp
     {
         public static void Initialize()
         {
-            ParseObject.RegisterSubclass<ApParseUser>();
-            ParseObject.RegisterSubclass<ApParseInstallation>();
-            ParseObject.RegisterSubclass<ApParseSession>();
-
-            ParseObject.RegisterSubclass<ApParseSighting>();
-            ParseObject.RegisterSubclass<ApParseSite>();
-            ParseObject.RegisterSubclass<ApParseRule>();
-            ParseObject.RegisterSubclass<ApParseTaxon>();
-            
-            
-
-            ParseClient.Initialize(ConfigurationManager.AppSettings.ParseApplicationId, ConfigurationManager.AppSettings.ParseDotNetKey);
-
-
-
-
             AutofacContainer.Container = Buildcontainer();
         }
 
