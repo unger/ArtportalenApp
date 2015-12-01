@@ -48,7 +48,7 @@ namespace ArtportalenApp.Storage
                         throw t.Exception;
                     }
                     _notificationCenter.Send(NotificationKeys.CurrentUserChanged, _currentUser);
-                    await AssociateDeviceWithUser();
+                    await AssociateInstallationWithUser();
                 });
         }
 
@@ -70,7 +70,7 @@ namespace ArtportalenApp.Storage
                     return t.Result;
                 });
 
-            await AssociateDeviceWithUser();
+            await AssociateInstallationWithUser();
 
             return new User
             {
@@ -85,9 +85,10 @@ namespace ArtportalenApp.Storage
             return ParseUser.RequestPasswordResetAsync(email);            
         }
 
-        public Task LogOut()
+        public async Task LogOut()
         {
-            return ParseUser.LogOutAsync()
+            await DisconnectUserFromInstallation();
+            await ParseUser.LogOutAsync()
                 .ContinueWith(t =>
                 {
                     if (t.IsFaulted)
@@ -141,7 +142,7 @@ namespace ArtportalenApp.Storage
             return resultSessions;
         }
 
-        private Task AssociateDeviceWithUser()
+        private Task AssociateInstallationWithUser()
         {
             // Associate the device with a user
             var installation = ParseInstallation.CurrentInstallation;
@@ -153,6 +154,13 @@ namespace ArtportalenApp.Storage
             }
 
             return installation.SaveAsync();
+        }
+
+        private Task DisconnectUserFromInstallation()
+        {
+            // Disconnect the device from user
+            ParseInstallation.CurrentInstallation.Remove("user");
+            return ParseInstallation.CurrentInstallation.SaveAsync();
         }
 
         public string GetDeviceString()
