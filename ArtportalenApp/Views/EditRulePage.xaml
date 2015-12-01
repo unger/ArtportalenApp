@@ -10,7 +10,6 @@
   <StackLayout>
 
     <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
-    <Button Text="temp" Command="{Binding TempCommand}"></Button>
 
     <TableView Intent="Form">
       <TableRoot>
