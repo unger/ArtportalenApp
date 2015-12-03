@@ -23,7 +23,7 @@ if %ERRORLEVEL% == 0 (
 
 copy %tempFolder%\*.ipa "%outputFolder%" >NUL
 
-rmdir %tempFolder% /q /s 
+rem rmdir %tempFolder% /q /s 
 
 
 if %ERRORLEVEL% == 0 (
