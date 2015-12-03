@@ -28,7 +28,7 @@ namespace ArtportalenApp.Services
             {
                 position = await _geolocator.GetPositionAsync(timeoutMilliseconds: 10000);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 position = null;
             }

@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArtportalenApp.Views.EditRulePage">
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:EditRuleViewModel}"
+             
+             x:Class="ArtportalenApp.Views.EditRulePage"
+             x:Name="CurrentPage">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Spara" Command="{Binding SaveCommand}"></ToolbarItem>
@@ -54,53 +61,7 @@
           <TextCell Text="{Binding CurrentRule.TaxonCount, StringFormat='Arter ({0})'}" Detail="{Binding CurrentRule.TaxonSummary}" Command="{Binding ChangeTaxonsCommand}" StyleId="disclosure" />
           <TextCell Text="{Binding CurrentRule.MunicipalityCount, StringFormat='Kommun ({0})'}" Detail="{Binding CurrentRule.MunicipalitySummary}" Command="{Binding ChangeMunicipalityCommand}" StyleId="disclosure" />
           <TextCell Text="{Binding CurrentRule.ProvinceCount, StringFormat='Landskap ({0})'}" Detail="{Binding CurrentRule.ProvinceSummary}" Command="{Binding ChangeProvinceCommand}" StyleId="disclosure" />
-<!--
-          <ViewCell>
-            <ViewCell.View>
-              <Grid Padding="15,0,8,0">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="90" />
-                  <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="{Binding CurrentRule.TaxonCount, StringFormat='Arter ({0})'}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
-                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
-                  <Label Text="{Binding CurrentRule.TaxonSummary}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" FontSize="Small" LineBreakMode="TailTruncation" />
-                  <Button Text="Ändra" Command="{Binding ChangeTaxonsCommand}" HorizontalOptions="End" />
-                </StackLayout>
-              </Grid>
-            </ViewCell.View>
-          </ViewCell>
-          <ViewCell>
-            <ViewCell.View>
-              <Grid Padding="15,0,8,0">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="90" />
-                  <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="{Binding CurrentRule.MunicipalityCount, StringFormat='Kommun ({0})'}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
-                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
-                  <Label Text="{Binding CurrentRule.MunicipalitySummary}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="Small" LineBreakMode="TailTruncation" />
-                  <Button Text="Ändra" Command="{Binding ChangeMunicipalityCommand}" HorizontalOptions="End" />
-                </StackLayout>
-              </Grid>
-            </ViewCell.View>
-          </ViewCell>
-          <ViewCell>
-            <ViewCell.View>
-              <Grid Padding="15,0,8,0">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="90" />
-                  <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="{Binding CurrentRule.ProvinceCount, StringFormat='Landskap ({0})'}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
-                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
-                  <Label Text="{Binding CurrentRule.ProvinceSummary}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="Small" LineBreakMode="TailTruncation" />
-                  <Button Text="Ändra" Command="{Binding ChangeProvinceCommand}" HorizontalOptions="End" />
-                </StackLayout>
-              </Grid>
-            </ViewCell.View>
-          </ViewCell>
--->
+
           <SwitchCell Text="Aktiv" On="{Binding CurrentRule.IsActive}"/>
 
         </TableSection>

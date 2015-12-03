@@ -26,7 +26,7 @@ namespace ArtportalenApp.Storage
                 }
                 sightings = await ParseCloud.CallFunctionAsync<IList<ApParseSighting>>("match", parameters);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 sightings = new List<ApParseSighting>();
             }

@@ -163,9 +163,9 @@ namespace ArtportalenApp.ViewModels
                 var reports = await _reportStorage.GetReports();
                 Reports = new List<Report>(reports);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                // ignored
             }
             finally
             {

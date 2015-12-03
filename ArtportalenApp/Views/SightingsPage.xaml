@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:SightingsViewModel}"
+             
              xmlns:controls="clr-namespace:ArtportalenApp.Controls;assembly=ArtportalenApp"
              x:Class="ArtportalenApp.Views.SightingsPage"
-             x:Name="sightingsPage"
+             x:Name="CurrentPage"
              Title="{Binding Title}">
 
   <StackLayout>
@@ -46,7 +52,7 @@
             <ViewCell.View>
               <StackLayout Spacing="0" Padding="10,0,10,10">
                 <StackLayout Orientation="Horizontal">
-                  <StackLayout Padding="0,10,0,0" IsVisible="{Binding Mode=OneWay, Source={x:Reference sightingsPage}, Path=BindingContext.OrderByLatest}">
+                  <StackLayout Padding="0,10,0,0" IsVisible="{Binding Mode=OneWay, Source={x:Reference CurrentPage}, Path=BindingContext.OrderByLatest}">
                     <Label Text="{Binding TaxonName}" FontAttributes="Bold" HorizontalOptions="StartAndExpand" />
                   </StackLayout>
                   <Label Text="{Binding CreatedAtString, StringFormat='Rapporterad: {0}'}" FontSize="Micro" TextColor="#aaa" HorizontalOptions="EndAndExpand" />

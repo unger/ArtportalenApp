@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:SitesViewModel}"
+             
              x:Class="ArtportalenApp.Views.SitesPage"
-             x:Name="sitesPage">
+             x:Name="CurrentPage">
 
   <StackLayout>
-    <SearchBar x:Name="searchBar" Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />
+    <SearchBar Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />
 
     <ListView ItemsSource="{Binding Sites}"
               HasUnevenRows="True"
@@ -19,7 +25,7 @@
                     Text="{Binding TitleText}"
                     Detail="{Binding DetailText}"
                     StyleId="disclosure"
-                    Command="{Binding BindingContext.PreviewCommand, Source={x:Reference sitesPage}}"
+                    Command="{Binding BindingContext.PreviewCommand, Source={x:Reference CurrentPage}}"
                     CommandParameter="{Binding .}">
           </TextCell>
         </DataTemplate>

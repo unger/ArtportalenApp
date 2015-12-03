@@ -33,7 +33,6 @@ namespace ArtportalenApp.ViewModels
             set { SetProperty(value); }
         }
 
-
         public string SearchText
         {
             get { return GetProperty<string>(); }
@@ -53,7 +52,7 @@ namespace ArtportalenApp.ViewModels
         {
             get
             {
-                return _previewCommand ?? (_previewCommand = new Command(async x =>
+                return _previewCommand ?? (_previewCommand = new Command(x =>
                 {
                     var site = x as Site;
                     if (site != null)

@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:ChooseSingleTaxonViewModel}"
+
              xmlns:controls="clr-namespace:ArtportalenApp.Controls;assembly=ArtportalenApp"
              x:Class="ArtportalenApp.Views.ChooseSingleTaxonPage"
-             x:Name="currentPage">
+             x:Name="CurrentPage">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Avbryt" Priority="0" Command="{Binding DoneCommand}"/>
@@ -11,7 +17,7 @@
 
   <StackLayout>
 
-    <SearchBar x:Name="searchBar" Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />
+    <SearchBar Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />
     
     <ScrollView Orientation="Horizontal" Padding="15,0,15,0">
       <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,10">
@@ -32,7 +38,7 @@
         <DataTemplate>
           <TextCell Text="{Binding Name}" 
                   StyleId="disclosure"
-                  Command="{Binding BindingContext.DoneCommand, Source={x:Reference currentPage}}"
+                  Command="{Binding BindingContext.DoneCommand, Source={x:Reference CurrentPage}}"
                   CommandParameter="{Binding .}"/>
         </DataTemplate>
       </ListView.ItemTemplate>

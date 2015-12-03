@@ -160,9 +160,9 @@ namespace ArtportalenApp.ViewModels
                 var sightings = await _sightingStorage.Match(DaysFilter, RuleId);
                 Sightings = new List<Sighting>(sightings);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                // ignored
             }
             finally
             {

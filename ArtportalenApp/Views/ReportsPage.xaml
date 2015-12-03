@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:ReportsViewModel}"
+             
              x:Class="ArtportalenApp.Views.ReportsPage"
-             x:Name="currentPage">
+             x:Name="CurrentPage">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Lägg till" Command="{Binding AddCommand}"></ToolbarItem>
@@ -32,11 +38,11 @@
         <TextCell Text="{Binding TaxonName}"
                   Detail="{Binding SummaryRow}"
                   StyleId="disclosure"
-                  Command="{Binding BindingContext.EditCommand, Source={x:Reference currentPage}}"
+                  Command="{Binding BindingContext.EditCommand, Source={x:Reference CurrentPage}}"
                   CommandParameter="{Binding .}">
           <TextCell.ContextActions>
             <MenuItem
-                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference currentPage}}"
+                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CurrentPage}}"
                 CommandParameter="{Binding .}"
                 Text="Ta bort"
                 IsDestructive="True"/>

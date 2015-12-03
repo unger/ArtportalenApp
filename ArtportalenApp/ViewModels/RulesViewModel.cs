@@ -162,9 +162,9 @@ namespace ArtportalenApp.ViewModels
                 var rules = await _ruleStorage.GetRules();
                 Rules = new ObservableCollection<Rule>(rules);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                // ignored
             }
             finally
             {

@@ -10,8 +10,6 @@ namespace ArtportalenApp.ViewModels
     {
         private Command _doneCommand;
 
-        private string[] selectedValues;
-
         public Command DoneCommand
         {
             get

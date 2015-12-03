@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:SessionsViewModel}"
+             
              x:Class="ArtportalenApp.Views.SessionsPage"
-             x:Name="sessionsPage">
+             x:Name="CurrentPage">
 
   <ListView ItemsSource="{Binding Sessions}"
             HasUnevenRows="True">
@@ -20,7 +26,7 @@
           </ViewCell.View>
           <ViewCell.ContextActions>
             <MenuItem
-                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference sessionsPage}}"
+                Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CurrentPage}}"
                 CommandParameter="{Binding .}"
                 Text="Ta bort"
                 IsDestructive="True"/>
