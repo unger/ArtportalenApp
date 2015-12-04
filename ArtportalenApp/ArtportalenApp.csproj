@@ -108,6 +108,7 @@
     <Compile Include="Views\ChooseTaxonsPage.xaml.cs">
       <DependentUpon>ChooseTaxonsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ContentPageBase.cs" />
     <Compile Include="Views\EditReportPage.xaml.cs">
       <DependentUpon>EditReportPage.xaml</DependentUpon>
     </Compile>
