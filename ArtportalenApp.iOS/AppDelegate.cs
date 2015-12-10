@@ -45,10 +45,25 @@ namespace ArtportalenApp.iOS
             ParseInitializer.Initialize();
             ParsePushInitialize();
 
+            if (ParseUser.CurrentUser != null)
+            {
+                TestFairy.SetCorrelationId(ParseUser.CurrentUser.Email);
+            }
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override void OnActivated(UIApplication uiApplication)
+        {
+            if (uiApplication.ApplicationIconBadgeNumber > 0)
+            {
+                var installation = ParseInstallation.CurrentInstallation;
+                installation.Badge = 0;
+                installation.SaveAsync();
+            }
         }
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)

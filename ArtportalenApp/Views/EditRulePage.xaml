@@ -8,7 +8,8 @@
              d:DataContext="{d:DesignInstance vms:EditRuleViewModel}"
              
              x:Class="ArtportalenApp.Views.EditRulePage"
-             x:Name="CurrentPage">
+             x:Name="CurrentPage"
+             IsBusy="{Binding IsBusy, Mode=OneWay}">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Spara" Command="{Binding SaveCommand}"></ToolbarItem>

@@ -20,6 +20,7 @@ namespace ArtportalenApp.ViewModels
             Title = "Observationer";
             DaysFilter = "";
 
+
             notificationCenter.Subscribe<User>(this, NotificationKeys.CurrentUserChanged, u =>
             {
                 Device.BeginInvokeOnMainThread(RefreshSightings);
