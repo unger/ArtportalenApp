@@ -48,7 +48,9 @@ namespace ArtportalenApp
             builder.RegisterType<ReportsViewModel>();
             builder.RegisterType<EditReportViewModel>();
             builder.RegisterType<ArtportalenLogInViewModel>();
-            
+
+            builder.RegisterType<CreateReportViewModel>();
+            builder.RegisterType<CreateReportStep1ViewModel>();
             
 
             builder.Register(x => CrossDeviceInfo.Current).As<IDeviceInfo>();

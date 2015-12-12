@@ -23,12 +23,12 @@ namespace ArtportalenApp.Factories
             var page = new TPage();
             var vm = _context.Resolve<TViewModel>();
 
+            vm.Navigation = new NavigationService(page.Navigation, this);
+
             if (setAction != null)
             {
                 vm.SetState(setAction);
             }
-
-            vm.Navigation = new NavigationService(page.Navigation, this);
 
             if (poppedAction != null)
             {

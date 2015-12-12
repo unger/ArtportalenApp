@@ -29,7 +29,8 @@
       <TableSection>
         <TextCell StyleId="disclosure" Text="Observationer" Command="{Binding SightingsCommand}"/>
         <TextCell StyleId="disclosure" Text="Lokaler" Command="{Binding SitesCommand}"/>
-        <TextCell StyleId="disclosure" Text="Rapportera" Command="{Binding ReportsCommand}"/>
+        <TextCell StyleId="disclosure" Text="Rapportera fynd" Command="{Binding NewReportCommand}"/>
+        <TextCell StyleId="disclosure" Text="Mina rapporter" Command="{Binding MyReportsCommand}"/>
         <TextCell StyleId="disclosure" Text="Regler" Command="{Binding RulesCommand}"/>
       </TableSection>
       <TableSection>

@@ -92,6 +92,8 @@
     <Compile Include="ViewModels\ChooseTaxonsViewModel.cs" />
     <Compile Include="Interfaces\IMunicipalityService.cs" />
     <Compile Include="ViewModels\ArtportalenLogInViewModel.cs" />
+    <Compile Include="ViewModels\CreateReportStep1ViewModel.cs" />
+    <Compile Include="ViewModels\CreateReportViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
     <Compile Include="ViewModels\SessionsViewModel.cs" />
@@ -113,6 +115,10 @@
       <DependentUpon>ChooseTaxonsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ContentPageBase.cs" />
+    <Compile Include="Views\CreateReportPage.cs" />
+    <Compile Include="Views\CreateReportStep1Page.xaml.cs">
+      <DependentUpon>CreateReportStep1Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditReportPage.xaml.cs">
       <DependentUpon>EditReportPage.xaml</DependentUpon>
     </Compile>
@@ -311,6 +317,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ArtportalenLogInPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CreateReportStep1Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

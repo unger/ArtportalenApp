@@ -18,10 +18,11 @@ namespace ArtportalenApp.ViewModels
         private Command _rulesCommand;
         private Command _logOutCommand;
         private Command _sessionsCommand;
-        private Command _reportsCommand;
+        private Command _myReportsCommand;
         private Command _sitesCommand;
         private Command _disconnectFromArtportalenCommand;
         private Command _connectToArtportalenCommand;
+        private object _newReportCommand;
 
         public MenuViewModel(IAccountStorage accountStorage, ICurrentUser currentUser, IArtportalenService artportalenService)
         {
@@ -99,13 +100,26 @@ namespace ArtportalenApp.ViewModels
             }
         }
 
-        public Command ReportsCommand
+        public Command MyReportsCommand
         {
             get
             {
-                return _reportsCommand ?? (_reportsCommand = new Command(() =>
+                return _myReportsCommand ?? (_myReportsCommand = new Command(() =>
                 {
                     MasterNavigation.SetDetail<ReportsPage, ReportsViewModel>();
+                }));
+            }
+        }
+
+        public object NewReportCommand
+        {
+            get
+            {
+                return _newReportCommand ?? (_newReportCommand = new Command(async () =>
+                {
+                    await Navigation.PushModalAsync<CreateReportPage, CreateReportViewModel>(setAction: async vm =>
+                    {
+                    });
                 }));
             }
         }
@@ -138,9 +152,9 @@ namespace ArtportalenApp.ViewModels
         {
             get
             {
-                return _connectToArtportalenCommand ?? (_connectToArtportalenCommand = new Command(() =>
+                return _connectToArtportalenCommand ?? (_connectToArtportalenCommand = new Command(async () =>
                 {
-                    Navigation.PushModalAsync<ArtportalenLogInPage, ArtportalenLogInViewModel>(poppedAction: vm =>
+                    await Navigation.PushModalAsync<ArtportalenLogInPage, ArtportalenLogInViewModel>(poppedAction: vm =>
                     {
                         _artportalenService.SaveCredential(vm.Username, vm.Password);
                         IsConnectedArtportalen = _artportalenService.HasAccount;

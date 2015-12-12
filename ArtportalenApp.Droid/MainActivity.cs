@@ -9,17 +9,19 @@ using Android.OS;
 using ArtportalenApp.Configuration;
 using Parse;
 using Xamarin;
+using Xamarin.Forms.Platform.Android;
 
 namespace ArtportalenApp.Droid
 {
     [Activity(Label = "Artportalen", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+    public class MainActivity : FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
             LoadApplication(new App());
         }
     }

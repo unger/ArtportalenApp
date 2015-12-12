@@ -31,7 +31,15 @@ namespace ArtportalenApp.Views
             where TPage : Page, IViewModelAware<TViewModel>, new() 
             where TViewModel : class, IViewModel
         {
-            Detail = new NavigationPage(_pageFactory.CreatePage<TPage, TViewModel>(setAction));
+            var page = _pageFactory.CreatePage<TPage, TViewModel>(setAction);
+            if (page is NavigationPage)
+            {
+                Detail = page;
+            }
+            else
+            {
+                Detail = new NavigationPage(page);
+            }
             IsPresented = false;
         }
     }

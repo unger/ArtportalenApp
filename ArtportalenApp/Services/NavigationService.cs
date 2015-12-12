@@ -36,7 +36,14 @@ namespace ArtportalenApp.Services
         {
             var page = _pageFactory.CreatePage<TPage, TViewModel>(setAction, poppedAction);
 
-            return _navigation.PushModalAsync(new NavigationPage(page));
+            if (page is NavigationPage)
+            {
+                return _navigation.PushModalAsync(page);
+            }
+            else
+            {
+                return _navigation.PushModalAsync(new NavigationPage(page));
+            }
         }
 
         public async Task<Page> PopAsync()
