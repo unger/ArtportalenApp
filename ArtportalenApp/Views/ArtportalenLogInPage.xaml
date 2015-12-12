@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:ArtportalenLogInViewModel}"
+
+             x:Class="ArtportalenApp.Views.ArtportalenLogInPage">
+  
+  <ScrollView>
+    <StackLayout Padding="15">
+
+      <Label Text="Ange dina inloggningsuppgifter till Artportalen nedan. Uppgifterna lagras endast i din telefon och kommer endast användas för att hämta data från Artportalen via appen." />
+
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition></RowDefinition>
+          <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Text="Användarnamn" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" />
+        <Entry Text="{Binding Username}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Placeholder="Användarnamn" />
+
+        <Label Text="Lösenord" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" />
+        <Entry Text="{Binding Password}" IsPassword="True" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Placeholder="Lösenord" />
+      
+      
+      </Grid>
+
+      <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
+
+      <StackLayout VerticalOptions="FillAndExpand">
+        <Button Text="Logga in" Command="{Binding LogInCommand}" Style="{StaticResource buttonPrimary}" />
+      </StackLayout>
+
+    </StackLayout>
+  </ScrollView>
+
+</ContentPage>

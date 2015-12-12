@@ -11,6 +11,18 @@
              Title="Meny">
 <StackLayout>
 
+  <StackLayout Padding="15">
+    <Label Text="{Binding CurrentUser.Fullname}"/>
+    <Label Text="{Binding CurrentUser.Email}"/>
+    <StackLayout IsVisible="{Binding IsConnectedArtportalen}" Orientation="Horizontal" VerticalOptions="Center">
+      <Label Text="Kopplat till Artportalen" VerticalOptions="Center"/>
+      <Button Text="Koppla från" Command="{Binding DisconnectFromArtportalenCommand}" VerticalOptions="Center"/>
+    </StackLayout>
+    <StackLayout IsVisible="{Binding IsNotConnectedArtportalen}" Orientation="Horizontal" VerticalOptions="Center">
+      <Label Text="Ej kopplat till Artportalen" VerticalOptions="Center"/>
+      <Button Text="Koppla" Command="{Binding ConnectToArtportalenCommand}" VerticalOptions="Center"/>
+    </StackLayout>
+  </StackLayout>
 
   <TableView Intent="Menu">
     <TableRoot>
@@ -26,7 +38,6 @@
       </TableSection>
     </TableRoot>
   </TableView>
-
 
 </StackLayout>
 </ContentPage>

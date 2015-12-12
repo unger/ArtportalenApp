@@ -13,20 +13,46 @@ namespace ArtportalenApp.ViewModels
     public class MenuViewModel : ViewModelBase
     {
         private readonly IAccountStorage _accountStorage;
+        private readonly IArtportalenService _artportalenService;
         private Command _sightingsCommand;
         private Command _rulesCommand;
         private Command _logOutCommand;
         private Command _sessionsCommand;
         private Command _reportsCommand;
         private Command _sitesCommand;
+        private Command _disconnectFromArtportalenCommand;
+        private Command _connectToArtportalenCommand;
 
-        public MenuViewModel(IAccountStorage accountStorage)
+        public MenuViewModel(IAccountStorage accountStorage, ICurrentUser currentUser, IArtportalenService artportalenService)
         {
             _accountStorage = accountStorage;
+            _artportalenService = artportalenService;
+            CurrentUser = currentUser;
             Title = "Meny";
+
+            IsConnectedArtportalen = _artportalenService.HasAccount;
+            IsNotConnectedArtportalen = !_artportalenService.HasAccount;
         }
 
         public IMasterDetailNavigation MasterNavigation { get; set; }
+
+        public ICurrentUser CurrentUser
+        {
+            get { return GetProperty<ICurrentUser>(); }
+            set { SetProperty(value); }
+        }
+
+        public bool IsConnectedArtportalen
+        {
+            get { return GetProperty<bool>(); }
+            set { SetProperty(value); }
+        }
+
+        public bool IsNotConnectedArtportalen
+        {
+            get { return GetProperty<bool>(); }
+            set { SetProperty(value); }
+        }
 
         public Command SightingsCommand
         {
@@ -91,6 +117,35 @@ namespace ArtportalenApp.ViewModels
                 return _sitesCommand ?? (_sitesCommand = new Command(() =>
                 {
                     MasterNavigation.SetDetail<SitesPage, SitesViewModel>();
+                }));
+            }
+        }
+
+        public Command DisconnectFromArtportalenCommand
+        {
+            get
+            {
+                return _disconnectFromArtportalenCommand ?? (_disconnectFromArtportalenCommand = new Command(() =>
+                {
+                    _artportalenService.RemoveCredential();
+                    IsConnectedArtportalen = _artportalenService.HasAccount;
+                    IsNotConnectedArtportalen = !_artportalenService.HasAccount;
+                }));
+            }
+        }
+
+        public Command ConnectToArtportalenCommand
+        {
+            get
+            {
+                return _connectToArtportalenCommand ?? (_connectToArtportalenCommand = new Command(() =>
+                {
+                    Navigation.PushModalAsync<ArtportalenLogInPage, ArtportalenLogInViewModel>(poppedAction: vm =>
+                    {
+                        _artportalenService.SaveCredential(vm.Username, vm.Password);
+                        IsConnectedArtportalen = _artportalenService.HasAccount;
+                        IsNotConnectedArtportalen = !_artportalenService.HasAccount;
+                    });
                 }));
             }
         }

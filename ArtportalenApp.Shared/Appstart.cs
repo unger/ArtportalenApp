@@ -47,6 +47,7 @@ namespace ArtportalenApp
             builder.RegisterType<SitesViewModel>();
             builder.RegisterType<ReportsViewModel>();
             builder.RegisterType<EditReportViewModel>();
+            builder.RegisterType<ArtportalenLogInViewModel>();
             
             
 
@@ -60,7 +61,8 @@ namespace ArtportalenApp
             builder.RegisterType<ProvinceService>().As<IProvinceService>();
             builder.RegisterType<MuncipalityService>().As<IMunicipalityService>();
             builder.RegisterType<SiteService>().As<ISiteService>();
-
+            builder.RegisterType<ArtportalenService>().As<IArtportalenService>();
+            
             
             builder.RegisterType<ApParseCurrentUser>().As<ICurrentUser>().SingleInstance();            
 
@@ -70,6 +72,7 @@ namespace ArtportalenApp
             builder.RegisterType<AccountStorage>().As<IAccountStorage>();
             builder.RegisterType<SiteStorage>().As<ISiteStorage>();
             builder.RegisterType<ReportStorage>().As<IReportStorage>();
+            builder.RegisterType<ArtportalenAccountStorage>().As<IArtportalenAccountStorage>();
 
             
             builder.RegisterType<Services.NotificationCenter>().As<INotificationCenter>();

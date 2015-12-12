@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ParseErrorHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Startup\ParseInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\AccountStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\ArtportalenAccountStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\ReportStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\RuleStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SightingStorage.cs" />

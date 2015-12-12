@@ -14,11 +14,13 @@ namespace ArtportalenApp.Services
     {
         private readonly IGeolocator _geolocator;
         private readonly ISiteStorage _siteStorage;
+        private readonly IArtportalenService _artportalenService;
 
-        public SiteService(IGeolocator geolocator, ISiteStorage siteStorage)
+        public SiteService(IGeolocator geolocator, ISiteStorage siteStorage, IArtportalenService artportalenService)
         {
             _geolocator = geolocator;
             _siteStorage = siteStorage;
+            _artportalenService = artportalenService;
         }
 
         public async Task<IList<Site>> GetSites(string searchText = null)
@@ -35,7 +37,14 @@ namespace ArtportalenApp.Services
 
             if (position != null)
             {
-                return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude, searchText);
+                if (_artportalenService.HasAccount)
+                {
+                    return await _artportalenService.GetNearbySites(position.Latitude, position.Longitude);
+                }
+                else
+                {
+                    return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude, searchText);
+                }
             }
             
             return await _siteStorage.GetSites(searchText);

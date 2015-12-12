@@ -9,5 +9,7 @@
         public string XamarinInsightsApiKey { get; set; }
 
         public string TestFairyAppToken { get; set; }
+
+        public string ArtportalenAccessKey { get; set; }
     }
 }

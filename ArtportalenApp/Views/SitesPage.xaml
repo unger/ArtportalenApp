@@ -23,7 +23,7 @@
         <DataTemplate>
           <TextCell x:Name="textCell"
                     Text="{Binding TitleText}"
-                    Detail="{Binding DetailText}"
+                    Detail="{Binding DistanceText}"
                     StyleId="disclosure"
                     Command="{Binding BindingContext.PreviewCommand, Source={x:Reference CurrentPage}}"
                     CommandParameter="{Binding .}">

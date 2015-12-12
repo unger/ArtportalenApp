@@ -18,12 +18,27 @@
 
         public string TitleText
         {
-            get { return string.Format("{0} ({1:0}m)", SiteName, DistanceKm * 1000); }
+            get { return string.Format("{0}, {1}", SiteName, Kommun); }
         }
 
         public string DetailText
         {
             get { return string.Format("{0}, {1}, {2}", Forsamling, Kommun, Landskap); }
+        }
+
+        public string DistanceText
+        {
+            get
+            {
+                if (DistanceKm < 1)
+                {
+                    return string.Format("{0:0}m", DistanceKm*1000);
+                }
+                else
+                {
+                    return string.Format("{0:0.0}km", DistanceKm);
+                }
+            }
         }
     }
 }

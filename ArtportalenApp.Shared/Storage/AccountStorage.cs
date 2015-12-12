@@ -93,7 +93,8 @@ namespace ArtportalenApp.Storage
                 {
                     if (t.IsFaulted)
                     {
-                        ParseErrorHandler.HandleParseError(t.Exception.InnerException as ParseException);
+                        t.Exception.Handle(ex => true);
+                        //ParseErrorHandler.HandleParseError(t.Exception.InnerException as ParseException);
                     }
                     _notificationCenter.Send(NotificationKeys.CurrentUserChanged, _currentUser);
                 });
@@ -160,7 +161,14 @@ namespace ArtportalenApp.Storage
         {
             // Disconnect the device from user
             ParseInstallation.CurrentInstallation.Remove("user");
-            return ParseInstallation.CurrentInstallation.SaveAsync();
+            return ParseInstallation.CurrentInstallation.SaveAsync().ContinueWith(t =>
+            {
+                if (t.IsFaulted)
+                {
+                    t.Exception.Handle(ex => true);
+                }
+
+            });
         }
 
         public string GetDeviceString()
