@@ -71,6 +71,7 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Sighting.cs" />
     <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\Stage.cs" />
     <Compile Include="Models\Taxon.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,10 +79,13 @@
     <Compile Include="Interfaces\ITaxonService.cs" />
     <Compile Include="Interfaces\ISiteService.cs" />
     <Compile Include="Services\ArtportalenService.cs" />
+    <Compile Include="Interfaces\IReportService.cs" />
+    <Compile Include="Services\StageService.cs" />
     <Compile Include="Services\ProvinceService.cs" />
     <Compile Include="Services\MuncipalityService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\NotificationCenter.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\SitesService.cs" />
     <Compile Include="Services\TaxonService.cs" />
     <Compile Include="ViewModels\ChooseSingleSiteViewModel.cs" />

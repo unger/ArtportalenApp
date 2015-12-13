@@ -124,5 +124,11 @@ namespace ArtportalenApp.Models
                 return quantityValid && Site != null && Taxon != null;
             }
         }
+
+        public DateTime? CreatedAt
+        {
+            get { return GetProperty<DateTime?>(); }
+            set { SetProperty(value); }
+        }
     }
 }

@@ -1,6 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ArtportalenApp.Views.CreateReportStep1Page">
-  <Label Text="Step 1" VerticalOptions="Center" HorizontalOptions="Center" />
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             d:DataContext="{d:DesignInstance vms:CreateReportStep1ViewModel}"
+
+             Title="Välj lokal"
+             x:Class="ArtportalenApp.Views.CreateReportStep1Page"
+             x:Name="CurrentPage">
+
+  <TableView Intent="Menu">
+    <TableRoot>
+      <TableSection Title="Senast använda lokaler">
+        <TextCell Text="{Binding FirstSite.TitleText}" StyleId="disclosure" />
+        <TextCell Text="{Binding SecondSite.TitleText}" StyleId="disclosure" />
+        <TextCell Text="{Binding ThirdSite.TitleText}" StyleId="disclosure" />
+        <TextCell Text="{Binding FourthSite.TitleText}" StyleId="disclosure" />
+        <TextCell Text="{Binding FifthSite.TitleText}" StyleId="disclosure" />
+      </TableSection>
+    </TableRoot>
+  </TableView>
+
 </ContentPage>

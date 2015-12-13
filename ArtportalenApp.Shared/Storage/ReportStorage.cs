@@ -16,6 +16,7 @@ namespace ArtportalenApp.Storage
             var reports = await new ParseQuery<ApParseSighting>()
                 .Where(x => x.User == ParseUser.CurrentUser)
                 .Where(x => x.SightingId == null)
+                .OrderByDescending(x => x.CreatedAt)
                 .FindAsync();
 
             return reports.Select(ConvertToReport).ToList();
@@ -119,6 +120,7 @@ namespace ArtportalenApp.Storage
                 StartTime = s.StartDate.TimeOfDay,
                 EndTime = s.EndDate.TimeOfDay,
                 Comment = s.Comment,
+                CreatedAt = s.CreatedAt,
             };
         }
     }

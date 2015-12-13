@@ -64,6 +64,8 @@ namespace ArtportalenApp
             builder.RegisterType<MuncipalityService>().As<IMunicipalityService>();
             builder.RegisterType<SiteService>().As<ISiteService>();
             builder.RegisterType<ArtportalenService>().As<IArtportalenService>();
+            builder.RegisterType<ReportService>().As<IReportService>();
+            
             
             
             builder.RegisterType<ApParseCurrentUser>().As<ICurrentUser>().SingleInstance();            

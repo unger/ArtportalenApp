@@ -18,7 +18,15 @@
 
         public string TitleText
         {
-            get { return string.Format("{0}, {1}", SiteName, Kommun); }
+            get
+            {
+                if (SiteName.EndsWith(Kommun))
+                {
+                    return SiteName;
+                }
+
+                return string.Format("{0}, {1}", SiteName, Kommun);
+            }
         }
 
         public string DetailText
