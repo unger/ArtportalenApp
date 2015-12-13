@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Artportalen.Model;
 using ArtportalenApp.Helpers;
 using ArtportalenApp.Interfaces;
 using ArtportalenApp.Models;
