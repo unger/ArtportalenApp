@@ -34,7 +34,7 @@ namespace ArtportalenApp.ViewModels
                         SelectedSite = site;
                     }
 
-                    await Navigation.PopAsync();
+                    await DoneAction();
                 }));
             }
         }

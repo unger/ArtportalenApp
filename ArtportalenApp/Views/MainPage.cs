@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public class MainPage : MasterDetailPage, IViewModelAware<MainViewModel>, IMasterDetailNavigation
+    public class MainPage : MasterDetailPage, IPage<MainViewModel>, IMasterDetailNavigation
     {
         private IPageFactory _pageFactory;
 
@@ -19,16 +19,15 @@ namespace ArtportalenApp.Views
         {
             _pageFactory = AutofacContainer.Container.Resolve<IPageFactory>();
 
-            Master = _pageFactory.CreatePage<MenuPage, MenuViewModel>(setAction: vm => { vm.MasterNavigation = this; });
-            Detail = new NavigationPage(_pageFactory.CreatePage<SightingsPage, SightingsViewModel>(
-                setAction: vm => { vm.Title = "Obsar"; }));
+            Master = new NavigationPage(_pageFactory.CreatePage<MenuPage, MenuViewModel>(init: vm => { vm.MasterNavigation = this; })) { Title = "Menu" };
+            Detail = new NavigationPage(_pageFactory.CreatePage<SightingsPage, SightingsViewModel>(init: vm => { vm.Title = "Obsar"; }));
         }
 
 
         public MainViewModel ViewModel { get; set; }
 
         public void SetDetail<TPage, TViewModel>(Action<TViewModel> setAction = null) 
-            where TPage : Page, IViewModelAware<TViewModel>, new() 
+            where TPage : Page, IPage<TViewModel>, new() 
             where TViewModel : class, IViewModel
         {
             var page = _pageFactory.CreatePage<TPage, TViewModel>(setAction);

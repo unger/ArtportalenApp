@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class ChooseValuesPage : ContentPage, IViewModelAware<ChooseValuesViewModel>
+    public partial class ChooseValuesPage : ContentPage, IPage<ChooseValuesViewModel>
     {
         public ChooseValuesPage()
         {

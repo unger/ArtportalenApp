@@ -28,7 +28,7 @@ namespace ArtportalenApp.ViewModels
                         SelectedTaxon = taxon;
                     }
 
-                    await Navigation.PopAsync();
+                    await DoneAction();
                 }));
             }
         }

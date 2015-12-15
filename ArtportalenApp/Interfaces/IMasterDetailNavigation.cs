@@ -6,7 +6,7 @@ namespace ArtportalenApp.Interfaces
     public interface IMasterDetailNavigation
     {
         void SetDetail<TPage, TViewModel>(Action<TViewModel> setAction = null)
-            where TPage : Page, IViewModelAware<TViewModel>, new()
+            where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel;
     }
 }

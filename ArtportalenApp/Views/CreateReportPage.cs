@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public class CreateReportPage : NavigationPage, IViewModelAware<CreateReportViewModel>
+    public class CreateReportPage : NavigationPage, IPage<CreateReportViewModel>
     {
         public CreateReportPage()
         {

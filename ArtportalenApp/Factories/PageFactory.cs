@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ArtportalenApp.DependencyInjection;
 using ArtportalenApp.Interfaces;
 using ArtportalenApp.Services;
@@ -16,8 +17,8 @@ namespace ArtportalenApp.Factories
             _context = context;
         }
 
-        public TPage CreatePage<TPage, TViewModel>(Action<TViewModel> setAction = null, Action<TViewModel> poppedAction = null) 
-            where TPage : Page, IViewModelAware<TViewModel>, new()
+        public TPage CreatePage<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null, Action<TViewModel> cancel = null) 
+            where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel
         {
             var page = new TPage();
@@ -25,18 +26,31 @@ namespace ArtportalenApp.Factories
 
             vm.Navigation = new NavigationService(page.Navigation, this);
 
-            if (setAction != null)
+            if (init != null)
             {
-                vm.SetState(setAction);
+                vm.SetState(init);
             }
 
-            if (poppedAction != null)
+            vm.SetDoneAction(() =>
             {
-                vm.Navigation.Pop += (sender, args) =>
+                if (done != null)
                 {
-                    poppedAction(vm);
-                };
-            }
+                    done(vm);
+                }
+
+                return Task.FromResult(0);
+            });
+
+            vm.Navigation.Pop += (sender, args) =>
+            {
+                if (cancel != null)
+                {
+                    if (!vm.IsDone)
+                    {
+                        cancel(vm);
+                    }
+                }
+            };
 
             page.BindingContext = page.ViewModel = vm;
 

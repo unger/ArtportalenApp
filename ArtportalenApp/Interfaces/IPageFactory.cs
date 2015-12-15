@@ -5,8 +5,8 @@ namespace ArtportalenApp.Interfaces
 {
     public interface IPageFactory
     {
-        TPage CreatePage<TPage, TViewModel>(Action<TViewModel> setAction = null, Action<TViewModel> poppedAction = null)
-            where TPage : Page, IViewModelAware<TViewModel>, new()
+        TPage CreatePage<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null, Action<TViewModel> cancel = null)
+            where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel;
     }
 }

@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class ArtportalenLogInPage : ContentPage, IViewModelAware<ArtportalenLogInViewModel>
+    public partial class ArtportalenLogInPage : ContentPage, IPage<ArtportalenLogInViewModel>
     {
         public ArtportalenLogInPage()
         {

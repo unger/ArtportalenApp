@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class EditReportPage : ContentPage, IViewModelAware<EditReportViewModel>
+    public partial class EditReportPage : ContentPage, IPage<EditReportViewModel>
     {
         public EditReportPage()
         {

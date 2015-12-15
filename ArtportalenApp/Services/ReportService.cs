@@ -33,8 +33,6 @@ namespace ArtportalenApp.Services
                 {
                     sites.Add(site);
                 }
-
-                if (sites.Count == 5) break;
             }
 
             return sites;

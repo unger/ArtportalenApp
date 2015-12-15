@@ -21,29 +21,27 @@ namespace ArtportalenApp.Services
 
         public event PopEventHandler Pop;
 
-        public Task PushAsync<TPage, TViewModel>(Action<TViewModel> setAction = null, Action<TViewModel> poppedAction = null)
-            where TPage : Page, IViewModelAware<TViewModel>, new()
+        public Task PushAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null)
+            where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel
         {
-            var page = _pageFactory.CreatePage<TPage, TViewModel>(setAction, poppedAction);
+            var page = _pageFactory.CreatePage<TPage, TViewModel>(init, done);
 
             return _navigation.PushAsync(page);
         }
 
-        public Task PushModalAsync<TPage, TViewModel>(Action<TViewModel> setAction = null, Action<TViewModel> poppedAction = null)
-            where TPage : Page, IViewModelAware<TViewModel>, new()
+        public Task PushModalAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null)
+            where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel
         {
-            var page = _pageFactory.CreatePage<TPage, TViewModel>(setAction, poppedAction);
+            var page = _pageFactory.CreatePage<TPage, TViewModel>(init, done);
 
             if (page is NavigationPage)
             {
                 return _navigation.PushModalAsync(page);
             }
-            else
-            {
-                return _navigation.PushModalAsync(new NavigationPage(page));
-            }
+
+            return _navigation.PushModalAsync(new NavigationPage(page));
         }
 
         public async Task<Page> PopAsync()
@@ -66,13 +64,13 @@ namespace ArtportalenApp.Services
             OnPop(EventArgs.Empty);
         }
 
-        public void ResetMainPage<TPage, TViewModel>(bool wrapWithNavigationPage, Action<TViewModel> setAction = null, Action<TViewModel> poppedAction = null)
-            where TPage : Page, IViewModelAware<TViewModel>, new()
+        public void ResetMainPage<TPage, TViewModel>(bool wrapWithNavigationPage, Action<TViewModel> init = null)
+            where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                var page = _pageFactory.CreatePage<TPage, TViewModel>(setAction, poppedAction);
+                var page = _pageFactory.CreatePage<TPage, TViewModel>(init, null, null);
                 if (wrapWithNavigationPage)
                 {
                     Application.Current.MainPage = new NavigationPage(page);

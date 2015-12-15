@@ -67,7 +67,7 @@ namespace ArtportalenApp.ViewModels
                     if (rule != null)
                     {
                         await Navigation.PushAsync<SightingsPage, SightingsViewModel>(
-                            setAction: vm =>
+                            init: vm =>
                             {
                                 vm.Title = rule.Name;
                                 vm.RuleId = rule.Id;
@@ -87,11 +87,11 @@ namespace ArtportalenApp.ViewModels
                     if (rule != null)
                     {
                         await Navigation.PushAsync<EditRulePage, EditRuleViewModel>(
-                            setAction: vm =>
+                            init: vm =>
                             {
                                 vm.CurrentRule = rule;
                             },
-                            poppedAction: vm =>
+                            done: vm =>
                             {
                                 RefreshRules();
                             });
@@ -123,11 +123,11 @@ namespace ArtportalenApp.ViewModels
                 return _addCommand ?? (_addCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<EditRulePage, EditRuleViewModel>(
-                        setAction: vm =>
+                        init: vm =>
                         {
                             vm.CurrentRule = new Rule();
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
                             RefreshRules();
                         });

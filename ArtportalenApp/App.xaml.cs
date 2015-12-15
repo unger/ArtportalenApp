@@ -16,10 +16,14 @@ namespace ArtportalenApp
     {
         public App()
         {
-            InitializeComponent();
-
             var pageFactory = AutofacContainer.Container.Resolve<IPageFactory>();
             var currentUser = AutofacContainer.Container.Resolve<ICurrentUser>();
+
+            MainPage = new NavigationPage(pageFactory.CreatePage<LoadingPage, LoadingViewModel>());
+
+
+
+            InitializeComponent();
 
             // The root page of your application
             if (!currentUser.IsAutenticated)

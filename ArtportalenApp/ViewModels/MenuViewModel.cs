@@ -117,7 +117,7 @@ namespace ArtportalenApp.ViewModels
             {
                 return _newReportCommand ?? (_newReportCommand = new Command(async () =>
                 {
-                    await Navigation.PushModalAsync<CreateReportPage, CreateReportViewModel>(setAction: async vm =>
+                    await Navigation.PushModalAsync<CreateReportPage, CreateReportViewModel>(init: async vm =>
                     {
                     });
                 }));
@@ -154,9 +154,11 @@ namespace ArtportalenApp.ViewModels
             {
                 return _connectToArtportalenCommand ?? (_connectToArtportalenCommand = new Command(async () =>
                 {
-                    await Navigation.PushModalAsync<ArtportalenLogInPage, ArtportalenLogInViewModel>(poppedAction: vm =>
+                    await Navigation.PushModalAsync<ArtportalenLogInPage, ArtportalenLogInViewModel>(done: async vm =>
                     {
-                        _artportalenService.SaveCredential(vm.Username, vm.Password);
+                        await Navigation.PopModalAsync();
+
+                        await _artportalenService.SaveCredential(vm.Username, vm.Password);
                         IsConnectedArtportalen = _artportalenService.HasAccount;
                         IsNotConnectedArtportalen = !_artportalenService.HasAccount;
                     });

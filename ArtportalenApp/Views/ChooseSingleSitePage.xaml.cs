@@ -10,13 +10,11 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class ChooseSingleSitePage : ContentPageBase<ChooseSingleSiteViewModel>, IViewModelAware<ChooseSingleSiteViewModel>
+    public partial class ChooseSingleSitePage : ContentPage<ChooseSingleSiteViewModel>
     {
         public ChooseSingleSitePage()
         {
             InitializeComponent();
         }
-
-        public ChooseSingleSiteViewModel ViewModel { get; set; }
     }
 }

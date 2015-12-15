@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class EditRulePage : ContentPage, IViewModelAware<EditRuleViewModel>
+    public partial class EditRulePage : ContentPage, IPage<EditRuleViewModel>
     {
         public EditRulePage()
         {

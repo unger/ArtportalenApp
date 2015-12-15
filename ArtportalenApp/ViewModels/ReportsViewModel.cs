@@ -62,12 +62,13 @@ namespace ArtportalenApp.ViewModels
                     if (report != null)
                     {
                         await Navigation.PushAsync<EditReportPage, EditReportViewModel>(
-                            setAction: vm =>
+                            init: vm =>
                             {
                                 vm.CurrentReport = report;
                             },
-                            poppedAction: vm =>
+                            done: vm =>
                             {
+                                vm.Navigation.PopAsync();
                                 RefreshReports();
                             });
                     }
@@ -98,12 +99,13 @@ namespace ArtportalenApp.ViewModels
                 return _addCommand ?? (_addCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<EditReportPage, EditReportViewModel>(
-                        setAction: vm =>
+                        init: vm =>
                         {
                             vm.CurrentReport = new Report();
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
+                            vm.Navigation.PopAsync();
                             RefreshReports();
                         });
                 }));

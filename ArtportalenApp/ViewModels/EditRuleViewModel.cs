@@ -66,12 +66,14 @@ namespace ArtportalenApp.ViewModels
                 return _changeTaxonsCommand ?? (_changeTaxonsCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<ChooseTaxonsPage, ChooseTaxonsViewModel>(
-                        setAction: vm =>
+                        init: vm =>
                         {
                             vm.SetSelectedTaxons(CurrentRule.Taxons);
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
+                            vm.Navigation.PopAsync();
+
                             var taxons = vm.Taxons.Where(t => t.Selected).Select(t => t.Name);
                             CurrentRule.Taxons = taxons.ToArray();
                         });
@@ -86,12 +88,14 @@ namespace ArtportalenApp.ViewModels
                 return _changeMunicipalityCommand ?? (_changeMunicipalityCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<ChooseValuesPage, ChooseValuesViewModel>(
-                        setAction: vm =>
+                        init: vm =>
                         {
                             vm.SetValues(_municipalityService.GetAll().Select(x => x.Name).ToArray(), CurrentRule.Kommuner);
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
+                            vm.Navigation.PopAsync();
+
                             CurrentRule.Kommuner = vm.AllValues.Where(t => t.Selected).Select(t => t.Name).ToArray();
                         });
                 }));
@@ -105,12 +109,13 @@ namespace ArtportalenApp.ViewModels
                 return _changeProvinceCommand ?? (_changeProvinceCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<ChooseValuesPage, ChooseValuesViewModel>(
-                        setAction: vm =>
+                        init: vm =>
                         {
                             vm.SetValues(_provinceService.GetAll().Select(x => x.Name).ToArray(), CurrentRule.Landskap);
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
+                            vm.Navigation.PopAsync();
                             CurrentRule.Landskap = vm.AllValues.Where(t => t.Selected).Select(t => t.Name).ToArray();
                         });
                 }));

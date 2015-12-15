@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class ChooseSingleTaxonPage : ContentPage, IViewModelAware<ChooseSingleTaxonViewModel>
+    public partial class ChooseSingleTaxonPage : ContentPage, IPage<ChooseSingleTaxonViewModel>
     {
         public ChooseSingleTaxonPage()
         {

@@ -16,7 +16,7 @@ namespace ArtportalenApp.ViewModels
             {
                 return _doneCommand ?? (_doneCommand = new Command(async () =>
                 {
-                    await Navigation.PopAsync();
+                    await DoneAction();
                 }));
             }
         }

@@ -37,14 +37,12 @@ namespace ArtportalenApp.Services
 
             if (position != null)
             {
-                if (_artportalenService.HasAccount)
+                if (_artportalenService.HasAccount && string.IsNullOrEmpty(searchText))
                 {
                     return await _artportalenService.GetNearbySites(position.Latitude, position.Longitude);
                 }
-                else
-                {
-                    return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude, searchText);
-                }
+
+                return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude, searchText);
             }
             
             return await _siteStorage.GetSites(searchText);

@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using ArtportalenApp.Interfaces;
 using ArtportalenApp.Models;
+using ArtportalenApp.Views;
+using Xamarin.Forms;
 
 namespace ArtportalenApp.ViewModels
 {
     public class CreateReportStep1ViewModel : ViewModelBase
     {
         private readonly IReportService _reportService;
+        private Command _nextCommand;
+        private Command _cancelCommand;
 
         public CreateReportStep1ViewModel(IReportService reportService)
         {
@@ -29,60 +33,47 @@ namespace ArtportalenApp.ViewModels
                 }
                 else
                 {
-                    var sites = t.Result;
-                    for (int i = 0; i < 5; i++)
-                    {
-                        switch (i + 1)
-                        {
-                            case 1:
-                                FirstSite = sites[i];
-                                break;
-                            case 2:
-                                SecondSite = sites[i];
-                                break;
-                            case 3:
-                                ThirdSite = sites[i];
-                                break;
-                            case 4:
-                                FourthSite = sites[i];
-                                break;
-                            case 5:
-                                FifthSite = sites[i];
-                                break;
-                        }
-                    }
+                    Sites = t.Result;
                 }
             });
         }
 
-        public Site FirstSite
+        public IList<Site> Sites
         {
-            get { return GetProperty<Site>(); }
+            get { return GetProperty<List<Site>>(); }
             set { SetProperty(value); }
         }
 
-        public Site SecondSite
+        public Command NextCommand
         {
-            get { return GetProperty<Site>(); }
-            set { SetProperty(value); }
+            get
+            {
+                return _nextCommand ?? (_nextCommand = new Command(async obj =>
+                {
+                    var site = obj as Site;
+
+                    await Navigation.PushAsync<EditReportPage, EditReportViewModel>(
+                        init: vm =>
+                        {
+                            vm.CurrentReport = new Report { Site = site };
+                        },
+                        done: vm =>
+                        {
+                            vm.Navigation.PopModalAsync();
+                        });
+                }));
+            }
         }
 
-        public Site ThirdSite
+        public Command CancelCommand
         {
-            get { return GetProperty<Site>(); }
-            set { SetProperty(value); }
-        }
-
-        public Site FourthSite
-        {
-            get { return GetProperty<Site>(); }
-            set { SetProperty(value); }
-        }
-
-        public Site FifthSite
-        {
-            get { return GetProperty<Site>(); }
-            set { SetProperty(value); }
+            get
+            {
+                return _cancelCommand ?? (_cancelCommand = new Command(async obj =>
+                {
+                    await Navigation.PopModalAsync();
+                }));
+            }
         }
     }
 }

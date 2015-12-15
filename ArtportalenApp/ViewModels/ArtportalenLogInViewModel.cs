@@ -48,8 +48,7 @@ namespace ArtportalenApp.ViewModels
                     try
                     {
                         await _artportalenService.SaveCredential(Username, Password);
-
-                        await Navigation.PopModalAsync();
+                        await DoneAction();
                     }
                     catch (Exception e)
                     {

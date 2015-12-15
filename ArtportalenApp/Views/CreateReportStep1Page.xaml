@@ -1,26 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
              d:DataContext="{d:DesignInstance vms:CreateReportStep1ViewModel}"
 
              Title="Välj lokal"
              x:Class="ArtportalenApp.Views.CreateReportStep1Page"
+             x:TypeArguments="vms:CreateReportStep1ViewModel"
              x:Name="CurrentPage">
 
-  <TableView Intent="Menu">
-    <TableRoot>
-      <TableSection Title="Senast använda lokaler">
-        <TextCell Text="{Binding FirstSite.TitleText}" StyleId="disclosure" />
-        <TextCell Text="{Binding SecondSite.TitleText}" StyleId="disclosure" />
-        <TextCell Text="{Binding ThirdSite.TitleText}" StyleId="disclosure" />
-        <TextCell Text="{Binding FourthSite.TitleText}" StyleId="disclosure" />
-        <TextCell Text="{Binding FifthSite.TitleText}" StyleId="disclosure" />
-      </TableSection>
-    </TableRoot>
-  </TableView>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Avbryt" Command="{Binding CancelCommand}"/>
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout>
+    <ListView ItemsSource="{Binding Sites}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding TitleText}" 
+                    Command="{Binding BindingContext.NextCommand, Source={x:Reference CurrentPage}}" 
+                    CommandParameter="{Binding .}" 
+                    StyleId="disclosure" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 
-</ContentPage>
+</views:ContentPage>

@@ -66,7 +66,8 @@ namespace ArtportalenApp.ViewModels
                     try
                     {
                         await _reportStorage.SaveReport(CurrentReport);
-                        await Navigation.PopAsync();
+                        //await Navigation.PopAsync();
+                        await DoneAction();
                     }
                     catch (Exception e)
                     {
@@ -89,13 +90,15 @@ namespace ArtportalenApp.ViewModels
                 return _changeTaxonCommand ?? (_changeTaxonCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<ChooseSingleTaxonPage, ChooseSingleTaxonViewModel>(
-                        setAction: async vm =>
+                        init: async vm =>
                         {
                             vm.Taxons = await _taxonService.GetTaxons();
                             vm.SelectedTaxon = CurrentReport.Taxon;
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
+                            Navigation.PopAsync();
+
                             CurrentReport.Taxon = vm.SelectedTaxon;
                         });
                 }));
@@ -109,12 +112,14 @@ namespace ArtportalenApp.ViewModels
                 return _changeSiteCommand ?? (_changeSiteCommand = new Command(async () =>
                 {
                     await Navigation.PushAsync<ChooseSingleSitePage, ChooseSingleSiteViewModel>(
-                        setAction: vm =>
+                        init: vm =>
                         {
                             vm.SelectedSite = CurrentReport.Site;
                         },
-                        poppedAction: vm =>
+                        done: vm =>
                         {
+                            vm.Navigation.PopAsync();
+
                             CurrentReport.Site = vm.SelectedSite;
                         });
                 }));

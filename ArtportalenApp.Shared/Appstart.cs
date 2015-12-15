@@ -51,6 +51,7 @@ namespace ArtportalenApp
 
             builder.RegisterType<CreateReportViewModel>();
             builder.RegisterType<CreateReportStep1ViewModel>();
+            builder.RegisterType<LoadingViewModel>();
             
 
             builder.Register(x => CrossDeviceInfo.Current).As<IDeviceInfo>();
