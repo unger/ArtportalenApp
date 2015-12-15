@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Artportalen.Response.Web;
+using ArtportalenApp.Configuration;
 using ArtportalenApp.Interfaces;
 using ArtportalenApp.Models;
+using Newtonsoft.Json;
 using Plugin.Geolocator.Abstractions;
 
 namespace ArtportalenApp.Services

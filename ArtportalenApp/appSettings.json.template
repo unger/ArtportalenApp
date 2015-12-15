@@ -3,5 +3,6 @@
   "ParseDotNetKey":         "[ENTER_VALUE]",
   "XamarinInsightsApiKey":  "[ENTER_VALUE]",
   "TestFairyAppToken":      "[ENTER_VALUE]",
-  "ArtportalenAccessKey":   "[ENTER_VALUE]"
+  "ArtportalenAccessKey":   "[ENTER_VALUE]",
+  "UpdateSitesUrl":         "[ENTER VALUE]"
 }

@@ -4,12 +4,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Artportalen;
+using Artportalen.Response.Web;
 using ArtportalenApp.Configuration;
 using ArtportalenApp.Interfaces;
 using ArtportalenApp.Models;
+using Newtonsoft.Json;
 using SwedishCoordinates;
 using SwedishCoordinates.Positions;
 
@@ -63,6 +66,20 @@ namespace ArtportalenApp.Services
             var sites = await _ap2WebClient.GetSitesWithinBoundsAsync(sw, ne);
             _artportalenAccountStorage.SaveCookies();
 
+            // Run this in background for non blocking of UI
+            Task.Run(async () =>
+            {
+                await UpdateSites(sites).ContinueWith(t =>
+                {
+                    if (t.IsFaulted)
+                    {
+                        t.Exception.Handle(ex => true);
+                    }
+
+                    return t.Result;
+                });
+            });
+
             return sites.Select(s =>
                 new Site
                 {
@@ -87,6 +104,17 @@ namespace ArtportalenApp.Services
             var dLng = pos1.Longitude - pos2.Longitude;
 
             return Math.Sqrt(dLat * dLat + dLng * dLng) / 1000;
+        }
+
+        public Task<HttpResponseMessage> UpdateSites(IList<SiteResponse> sites)
+        {
+            var url = new Uri(ConfigurationManager.AppSettings.UpdateSitesUrl);
+            var client = new HttpClient();
+            var content = JsonConvert.SerializeObject(new { sites = sites });
+            var httpContent = new StringContent(content);
+            httpContent.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+
+            return client.PostAsync(url, httpContent);
         }
     }
 }

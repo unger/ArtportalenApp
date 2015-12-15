@@ -11,5 +11,7 @@
         public string TestFairyAppToken { get; set; }
 
         public string ArtportalenAccessKey { get; set; }
+
+        public string UpdateSitesUrl { get; set; }
     }
 }
