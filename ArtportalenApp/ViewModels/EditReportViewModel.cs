@@ -111,7 +111,7 @@ namespace ArtportalenApp.ViewModels
             {
                 return _changeSiteCommand ?? (_changeSiteCommand = new Command(async () =>
                 {
-                    await Navigation.PushAsync<ChooseSingleSitePage, ChooseSingleSiteViewModel>(
+                    await Navigation.PushAsync<ChooseSiteSearchPage, ChooseSiteSearchViewModel>(
                         init: vm =>
                         {
                             vm.SelectedSite = CurrentReport.Site;

@@ -135,8 +135,8 @@
       <HintPath>..\packages\AngleSharp.0.9.3\lib\portable-windows8+net45+windowsphone8+wpa\AngleSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Artportalen, Version=0.4.83.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Artportalen.0.4.83.0\lib\portable-net45+win+MonoAndroid10+xamarinios10+MonoTouch10\Artportalen.dll</HintPath>
+    <Reference Include="Artportalen, Version=0.4.85.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Artportalen.0.4.85.0\lib\portable-net45+win+MonoAndroid10+xamarinios10+MonoTouch10\Artportalen.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">

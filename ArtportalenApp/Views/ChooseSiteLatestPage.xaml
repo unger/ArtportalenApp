@@ -6,11 +6,11 @@
              mc:Ignorable="d"
              xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
              xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
-             d:DataContext="{d:DesignInstance vms:CreateReportStep1ViewModel}"
+             d:DataContext="{d:DesignInstance vms:ChooseSiteLatestViewModel}"
 
-             Title="Välj lokal"
-             x:Class="ArtportalenApp.Views.CreateReportStep1Page"
-             x:TypeArguments="vms:CreateReportStep1ViewModel"
+             Title="{Binding Title}"
+             x:Class="ArtportalenApp.Views.ChooseSiteLatestPage"
+             x:TypeArguments="vms:ChooseSiteLatestViewModel"
              x:Name="CurrentPage">
 
   <ContentPage.ToolbarItems>
@@ -18,11 +18,14 @@
   </ContentPage.ToolbarItems>
   
   <StackLayout>
-    <ListView ItemsSource="{Binding Sites}">
+    <ListView ItemsSource="{Binding Sites}"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding RefreshCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <TextCell Text="{Binding TitleText}" 
-                    Command="{Binding BindingContext.NextCommand, Source={x:Reference CurrentPage}}" 
+                    Command="{Binding BindingContext.DoneCommand, Source={x:Reference CurrentPage}}" 
                     CommandParameter="{Binding .}" 
                     StyleId="disclosure" />
         </DataTemplate>

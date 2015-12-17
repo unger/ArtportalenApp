@@ -13,8 +13,7 @@ namespace ArtportalenApp.Views
 
         protected override void OnAppearing()
         {
-            // This disables some databinding at least on Android, investigate workaround
-            //searchBar.Focus();
+            SearchBarElement.Focus();
 
             base.OnAppearing();
         }

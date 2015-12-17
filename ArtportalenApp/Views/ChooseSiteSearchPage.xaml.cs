@@ -10,11 +10,18 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class ChooseSingleSitePage : ContentPage<ChooseSingleSiteViewModel>
+    public partial class ChooseSiteSearchPage : ContentPage<ChooseSiteSearchViewModel>
     {
-        public ChooseSingleSitePage()
+        public ChooseSiteSearchPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            SearchBarElement.Focus();
+
+            base.OnAppearing();
         }
     }
 }

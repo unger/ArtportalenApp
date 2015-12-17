@@ -7,5 +7,7 @@ namespace ArtportalenApp.Interfaces
     public interface ISiteService
     {
         Task<IList<Site>> GetSites(string searchText = null);
+
+        Task<IList<Site>> GetNearBySites();
     }
 }

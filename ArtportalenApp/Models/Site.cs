@@ -15,6 +15,9 @@
         public int SiteYCoord { get; set; }
         public int SiteXCoord { get; set; }
         public double DistanceKm { get; set; }
+        public int? Accuracy { get; set; }
+        public long? ParentId { get; set; }
+        public bool? IsPublic { get; set; }
 
         public string TitleText
         {
@@ -31,7 +34,7 @@
 
         public string DetailText
         {
-            get { return string.Format("{0}, {1}, {2}", Forsamling, Kommun, Landskap); }
+            get { return string.Format("{0} ({1:##.#####},{2:##.#####}) {3}m", IsPublic.HasValue ? IsPublic.Value ? "Allmän" : "Privat" : "-", Latitude, Longitude, Accuracy); }
         }
 
         public string DistanceText

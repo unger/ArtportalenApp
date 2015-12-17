@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.Views
 {
-    public partial class CreateReportStep1Page : ContentPage<CreateReportStep1ViewModel>
+    public partial class ChooseSiteLatestPage : ContentPage<ChooseSiteLatestViewModel>
     {
-        public CreateReportStep1Page()
+        public ChooseSiteLatestPage()
         {
             InitializeComponent();
         }

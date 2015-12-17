@@ -5,24 +5,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vms:ChooseSingleSiteViewModel}"  
+             d:DataContext="{d:DesignInstance vms:ChooseSiteSearchViewModel}"  
              
              xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
              xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
-             x:TypeArguments="vms:ChooseSingleSiteViewModel"
-             x:Class="ArtportalenApp.Views.ChooseSingleSitePage"
-             x:Name="CurrentPage">
+             x:TypeArguments="vms:ChooseSiteSearchViewModel"
+             x:Class="ArtportalenApp.Views.ChooseSiteSearchPage"
+             x:Name="CurrentPage"
+             Title="{Binding Title}">
   
   <StackLayout>
     
-    <SearchBar Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />
+    <SearchBar x:Name="SearchBarElement" Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />
 
-    <ListView ItemsSource="{Binding Sites}" x:Name="SitesListView">
+    <ListView ItemsSource="{Binding Sites}" 
+              x:Name="SitesListView"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding RefreshCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
       <ListView.ItemTemplate>
         <DataTemplate>
           <TextCell x:Name="textCell"
                     Text="{Binding TitleText}"
-                    Detail="{Binding DistanceText}"
+                    Detail="{Binding DetailText}"
                     StyleId="disclosure"
                     Command="{Binding BindingContext.DoneCommand, Source={x:Reference CurrentPage}}"
                     CommandParameter="{Binding .}"/>

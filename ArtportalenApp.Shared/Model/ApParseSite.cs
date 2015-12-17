@@ -54,6 +54,13 @@ namespace ArtportalenApp
             set { SetProperty<string>(value); }
         }
 
+        [ParseFieldName("search")]
+        public string Search
+        {
+            get { return GetProperty<string>(); }
+            set { SetProperty<string>(value); }
+        }
+
         [ParseFieldName("useCount")]
         public int UseCount
         {
@@ -80,6 +87,27 @@ namespace ArtportalenApp
         {
             get { return GetProperty<int>(); }
             set { SetProperty<int>(value); }
+        }
+
+        [ParseFieldName("parentId")]
+        public long? ParentId
+        {
+            get { return GetProperty<long?>(); }
+            set { SetProperty(value); }
+        }
+
+        [ParseFieldName("accuracy")]
+        public int Accuracy
+        {
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
+        }
+
+        [ParseFieldName("isPublic")]
+        public bool? IsPublic
+        {
+            get { return GetProperty<bool?>(); }
+            set { SetProperty(value); }
         }
     }
 }

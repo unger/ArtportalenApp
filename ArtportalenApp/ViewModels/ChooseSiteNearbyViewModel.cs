@@ -9,16 +9,20 @@ using Xamarin.Forms;
 
 namespace ArtportalenApp.ViewModels
 {
-    public class ChooseSingleSiteViewModel : ViewModelBase
+    public class ChooseSiteNearbyViewModel : ViewModelBase
     {
         private readonly ISiteService _siteService;
         private Command _doneCommand;
+        private Command _refreshCommand;
 
-        public ChooseSingleSiteViewModel(ISiteService siteService)
+        public ChooseSiteNearbyViewModel(ISiteService siteService)
         {
             _siteService = siteService;
-            Title = "Välj lokal";
+            Title = "Nära";
+        }
 
+        public override void Appearing()
+        {
             Device.BeginInvokeOnMainThread(RefreshSites);
         }
 
@@ -37,6 +41,11 @@ namespace ArtportalenApp.ViewModels
                     await DoneAction();
                 }));
             }
+        }
+
+        public Command RefreshCommand
+        {
+            get { return _refreshCommand ?? (_refreshCommand = new Command(RefreshSites, () => !IsBusy)); }
         }
 
         public bool IsBusy
@@ -60,16 +69,6 @@ namespace ArtportalenApp.ViewModels
             }
         }
 
-        public string SearchText
-        {
-            get { return GetProperty<string>(); }
-            set
-            {
-                SetProperty(value);
-                RefreshSites();
-            }
-        }
-
         private async void RefreshSites()
         {
             if (IsBusy)
@@ -78,21 +77,15 @@ namespace ArtportalenApp.ViewModels
             }
 
             IsBusy = true;
-            var lastSearch = SearchText;
 
             try
             {
-                var sites = await _siteService.GetSites(lastSearch);
+                var sites = await _siteService.GetNearBySites();
                 Sites = new ObservableCollection<Site>(sites);
             }
             finally
             {
                 IsBusy = false;
-            }
-
-            if (lastSearch != SearchText)
-            {
-                RefreshSites();
             }
         }
     }

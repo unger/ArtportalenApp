@@ -30,6 +30,11 @@ namespace ArtportalenApp.Services
 
         public async Task<IList<Site>> GetSites(string searchText = null)
         {
+            return await _siteStorage.GetSites(searchText);
+        }
+
+        public async Task<IList<Site>> GetNearBySites()
+        {
             Position position;
             try
             {
@@ -42,15 +47,15 @@ namespace ArtportalenApp.Services
 
             if (position != null)
             {
-                if (_artportalenService.HasAccount && string.IsNullOrEmpty(searchText))
+                if (_artportalenService.HasAccount)
                 {
                     return await _artportalenService.GetNearbySites(position.Latitude, position.Longitude);
                 }
 
-                return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude, searchText);
+                return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude);
             }
-            
-            return await _siteStorage.GetSites(searchText);
+
+            return new List<Site>();
         }
     }
 }
