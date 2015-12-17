@@ -21,13 +21,13 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string></string>
+	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>Artportalen</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.magnusunger.artportalen</string>
 	<key>CFBundleVersion</key>
-	<string>38</string>
+	<string>39</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-60@2x.png</string>
