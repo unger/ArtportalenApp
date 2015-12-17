@@ -212,6 +212,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PluginsHelp\GeolocatorReadme.txt" />
+    <AndroidResource Include="Resources\drawable\bell.png" />
+    <AndroidResource Include="Resources\drawable\cog.png" />
+    <AndroidResource Include="Resources\drawable\globe.png" />
+    <AndroidResource Include="Resources\drawable\location-2.png" />
+    <AndroidResource Include="Resources\drawable\location.png" />
+    <AndroidResource Include="Resources\drawable\map.png" />
+    <AndroidResource Include="Resources\drawable\paper.png" />
+    <AndroidResource Include="Resources\drawable\search.png" />
+    <AndroidResource Include="Resources\drawable\star.png" />
+    <AndroidResource Include="Resources\drawable\tag.png" />
+    <AndroidResource Include="Resources\drawable\trash.png" />
+    <AndroidResource Include="Resources\drawable\menu.png" />
   </ItemGroup>
   <Import Project="..\ArtportalenApp.Shared\ArtportalenApp.Shared.projitems" Label="Shared" Condition="Exists('..\ArtportalenApp.Shared\ArtportalenApp.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

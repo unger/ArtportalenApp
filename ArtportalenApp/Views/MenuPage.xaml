@@ -8,7 +8,8 @@
              d:DataContext="{d:DesignInstance vms:MenuViewModel}"
              
              x:Class="ArtportalenApp.Views.MenuPage"
-             Title="Meny">
+             Title="Meny"
+             Icon="menu.png">
 <StackLayout>
 
   <StackLayout Padding="15">

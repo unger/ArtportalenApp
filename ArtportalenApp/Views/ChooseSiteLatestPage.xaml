@@ -11,7 +11,8 @@
              Title="{Binding Title}"
              x:Class="ArtportalenApp.Views.ChooseSiteLatestPage"
              x:TypeArguments="vms:ChooseSiteLatestViewModel"
-             x:Name="CurrentPage">
+             x:Name="CurrentPage"
+             Icon="tag.png">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Avbryt" Command="{Binding CancelCommand}"/>

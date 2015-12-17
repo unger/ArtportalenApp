@@ -12,7 +12,8 @@
              x:TypeArguments="vms:ChooseSiteSearchViewModel"
              x:Class="ArtportalenApp.Views.ChooseSiteSearchPage"
              x:Name="CurrentPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Icon="search.png">
   
   <StackLayout>
     

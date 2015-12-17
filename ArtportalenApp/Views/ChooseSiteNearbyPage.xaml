@@ -12,7 +12,8 @@
              x:TypeArguments="vms:ChooseSiteNearbyViewModel"
              x:Class="ArtportalenApp.Views.ChooseSiteNearbyPage"
              x:Name="CurrentPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Icon="location.png">
   
   <StackLayout>
     

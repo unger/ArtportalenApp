@@ -92,6 +92,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\CustomSearchBarRenderer.cs" />
     <Compile Include="Controls\StandardTextCellRenderer.cs" />
     <Compile Include="Controls\SegmentedControlRenderer.cs" />
     <Compile Include="Controls\StandardViewCellRenderer.cs" />
@@ -206,6 +207,42 @@
   <ItemGroup>
     <Content Include="DeviceInfoReadme.txt" />
     <Content Include="PluginsHelp\GeolocatorReadme.txt" />
+    <BundleResource Include="Resources\bell.png" />
+    <BundleResource Include="Resources\bell%402x.png" />
+    <BundleResource Include="Resources\bell%403x.png" />
+    <BundleResource Include="Resources\cog.png" />
+    <BundleResource Include="Resources\cog%402x.png" />
+    <BundleResource Include="Resources\cog%403x.png" />
+    <BundleResource Include="Resources\globe.png" />
+    <BundleResource Include="Resources\globe%402x.png" />
+    <BundleResource Include="Resources\globe%403x.png" />
+    <BundleResource Include="Resources\trash%403x.png" />
+    <BundleResource Include="Resources\trash%402x.png" />
+    <BundleResource Include="Resources\trash.png" />
+    <BundleResource Include="Resources\tag%403x.png" />
+    <BundleResource Include="Resources\tag%402x.png" />
+    <BundleResource Include="Resources\tag.png" />
+    <BundleResource Include="Resources\star%403x.png" />
+    <BundleResource Include="Resources\star%402x.png" />
+    <BundleResource Include="Resources\star.png" />
+    <BundleResource Include="Resources\search%403x.png" />
+    <BundleResource Include="Resources\search%402x.png" />
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\paper%403x.png" />
+    <BundleResource Include="Resources\paper%402x.png" />
+    <BundleResource Include="Resources\paper.png" />
+    <BundleResource Include="Resources\map%403x.png" />
+    <BundleResource Include="Resources\map%402x.png" />
+    <BundleResource Include="Resources\map.png" />
+    <BundleResource Include="Resources\location%403x.png" />
+    <BundleResource Include="Resources\location%402x.png" />
+    <BundleResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\location-2%403x.png" />
+    <BundleResource Include="Resources\location-2%402x.png" />
+    <BundleResource Include="Resources\location-2.png" />
+    <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Resources\menu%402x.png" />
+    <BundleResource Include="Resources\menu%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">
