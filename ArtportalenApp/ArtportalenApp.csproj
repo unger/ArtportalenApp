@@ -88,6 +88,7 @@
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\SitesService.cs" />
     <Compile Include="Services\TaxonService.cs" />
+    <Compile Include="ViewModels\ChooseSiteMapViewModel.cs" />
     <Compile Include="ViewModels\ChooseSiteSearchViewModel.cs" />
     <Compile Include="ViewModels\ChooseSiteNearbyViewModel.cs" />
     <Compile Include="ViewModels\ChooseSingleTaxonViewModel.cs" />
@@ -110,6 +111,9 @@
     <Compile Include="ViewModels\SightingsViewModel.cs" />
     <Compile Include="ViewModels\SitesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ChooseSiteMapPage.xaml.cs">
+      <DependentUpon>ChooseSiteMapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChooseSiteSearchPage.xaml.cs">
       <DependentUpon>ChooseSiteSearchPage.xaml</DependentUpon>
     </Compile>
@@ -218,6 +222,10 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.2.0.0.6490\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.Maps.2.0.0.6490\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -347,6 +355,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ChooseSiteSearchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ChooseSiteMapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

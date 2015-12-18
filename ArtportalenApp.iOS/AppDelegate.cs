@@ -50,7 +50,9 @@ namespace ArtportalenApp.iOS
                 TestFairy.SetCorrelationId(ParseUser.CurrentUser.Email);
             }
 
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
+            Xamarin.FormsMaps.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

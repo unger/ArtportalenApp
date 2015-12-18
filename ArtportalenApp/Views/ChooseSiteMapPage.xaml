@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPage
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vms:ChooseSiteMapViewModel}"  
+             
+             xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:TypeArguments="vms:ChooseSiteMapViewModel"
+             x:Class="ArtportalenApp.Views.ChooseSiteMapPage"
+             x:Name="CurrentPage"
+             Title="{Binding Title}"
+             Icon="map.png">
+  
+  <StackLayout>
+
+    <maps:Map WidthRequest="320" HeightRequest="200"
+        x:Name="MyMap"
+        IsShowingUser="true"
+        MapType="Hybrid"
+        />
+    
+  </StackLayout>
+
+</views:ContentPage>

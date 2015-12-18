@@ -44,6 +44,7 @@ namespace ArtportalenApp
             builder.RegisterType<ChooseSiteSearchViewModel>();
             builder.RegisterType<ChooseSiteNearbyViewModel>();
             builder.RegisterType<ChooseSiteLatestViewModel>();
+            builder.RegisterType<ChooseSiteMapViewModel>();
             builder.RegisterType<ChooseSiteViewModel>();
             builder.RegisterType<ChooseValuesViewModel>();
             builder.RegisterType<SessionsViewModel>();
@@ -51,6 +52,7 @@ namespace ArtportalenApp
             builder.RegisterType<ReportsViewModel>();
             builder.RegisterType<EditReportViewModel>();
             builder.RegisterType<ArtportalenLogInViewModel>();
+
 
             builder.RegisterType<CreateReportViewModel>();
             builder.RegisterType<LoadingViewModel>();

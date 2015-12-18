@@ -27,6 +27,11 @@ namespace ArtportalenApp.Views
                 ViewModel.SelectedSite = vm.SelectedSite;
                 await ViewModel.DoneAction();
             }));
+            Children.Add(pageFactory.CreatePage<ChooseSiteMapPage, ChooseSiteMapViewModel>(done: async vm =>
+            {
+                ViewModel.SelectedSite = vm.SelectedSite;
+                await ViewModel.DoneAction();
+            }));
         }
 
         public ChooseSiteViewModel ViewModel { get; set; }

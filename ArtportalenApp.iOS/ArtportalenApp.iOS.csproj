@@ -186,6 +186,14 @@
       <HintPath>..\packages\Xamarin.Forms.2.0.0.6490\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Xamarin.Forms.Maps, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.Maps.2.0.0.6490\lib\Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.Maps.2.0.0.6490\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.2.0.0.6490\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
       <Private>True</Private>
@@ -237,9 +245,9 @@
     <BundleResource Include="Resources\location%403x.png" />
     <BundleResource Include="Resources\location%402x.png" />
     <BundleResource Include="Resources\location.png" />
-    <BundleResource Include="Resources\location-2%403x.png" />
-    <BundleResource Include="Resources\location-2%402x.png" />
-    <BundleResource Include="Resources\location-2.png" />
+    <BundleResource Include="Resources\location2%403x.png" />
+    <BundleResource Include="Resources\location2%402x.png" />
+    <BundleResource Include="Resources\location2.png" />
     <BundleResource Include="Resources\menu.png" />
     <BundleResource Include="Resources\menu%402x.png" />
     <BundleResource Include="Resources\menu%403x.png" />
