@@ -57,11 +57,13 @@ namespace ArtportalenApp.Services
             return _artportalenAccountStorage.GetCredential();
         }
 
-        public async Task<IList<Site>> GetNearbySites(double latitude, double longitude)
+        public async Task<IList<Site>> GetNearbySites(double latitude, double longitude, double distanceRadians)
         {
+            var distance = distanceRadians*10000;
+            if (distance == 0) distance = 5000;
             var pos = new WGS84Position(latitude, longitude).ToWebMercator();
-            var sw = new WebMercatorPosition(pos.Latitude - 5000, pos.Longitude - 5000);
-            var ne = new WebMercatorPosition(pos.Latitude + 5000, pos.Longitude + 5000);
+            var sw = new WebMercatorPosition(pos.Latitude - distance, pos.Longitude - distance);
+            var ne = new WebMercatorPosition(pos.Latitude + distance, pos.Longitude + distance);
 
             var sites = await _ap2WebClient.GetSitesWithinBoundsAsync(sw, ne);
             _artportalenAccountStorage.SaveCookies();

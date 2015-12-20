@@ -66,7 +66,6 @@ namespace ArtportalenApp.ViewModels
                     try
                     {
                         await _reportStorage.SaveReport(CurrentReport);
-                        //await Navigation.PopAsync();
                         await DoneAction();
                     }
                     catch (Exception e)
@@ -95,11 +94,10 @@ namespace ArtportalenApp.ViewModels
                             vm.Taxons = await _taxonService.GetTaxons();
                             vm.SelectedTaxon = CurrentReport.Taxon;
                         },
-                        done: vm =>
+                        done: async vm =>
                         {
-                            Navigation.PopAsync();
-
                             CurrentReport.Taxon = vm.SelectedTaxon;
+                            await Navigation.PopAsync();
                         });
                 }));
             }
@@ -116,11 +114,10 @@ namespace ArtportalenApp.ViewModels
                         {
                             vm.SelectedSite = CurrentReport.Site;
                         },
-                        done: vm =>
+                        done: async vm =>
                         {
-                            vm.Navigation.PopAsync();
-
                             CurrentReport.Site = vm.SelectedSite;
+                            await vm.Navigation.PopAsync();
                         });
                 }));
             }

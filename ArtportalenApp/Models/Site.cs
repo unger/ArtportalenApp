@@ -41,6 +41,10 @@
         {
             get
             {
+                if (DistanceKm == 0)
+                {
+                    return string.Empty;
+                }
                 if (DistanceKm < 1)
                 {
                     return string.Format("{0:0}m", DistanceKm*1000);

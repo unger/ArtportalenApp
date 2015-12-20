@@ -10,19 +10,31 @@
              xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
              xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:customMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
+             xmlns:maps1="clr-namespace:ArtportalenApp.Maps;assembly=ArtportalenApp"
+             xmlns:behavior="clr-namespace:ArtportalenApp.Behavior;assembly=ArtportalenApp"
              x:TypeArguments="vms:ChooseSiteMapViewModel"
              x:Class="ArtportalenApp.Views.ChooseSiteMapPage"
              x:Name="CurrentPage"
-             Title="{Binding Title}"
-             Icon="map.png">
-  
+             Title="{Binding Title}">
+
+  <Page.Icon>
+    <OnPlatform x:TypeArguments="FileImageSource" iOS="map.png" />
+  </Page.Icon>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Avbryt" Command="{Binding CancelCommand}"/>
+  </ContentPage.ToolbarItems>
+
   <StackLayout>
 
-    <maps:Map WidthRequest="320" HeightRequest="200"
-        x:Name="MyMap"
-        IsShowingUser="true"
-        MapType="Hybrid"
-        />
+    <maps:Map MapType="Street" VerticalOptions="FillAndExpand" IsShowingUser="True">
+      <maps:Map.Behaviors>
+        <behavior:MapBehavior 
+          ItemsSource="{Binding Pins}"
+          VisibleRegion="{Binding VisibleRegion}"/>
+      </maps:Map.Behaviors>
+    </maps:Map>    
     
   </StackLayout>
 

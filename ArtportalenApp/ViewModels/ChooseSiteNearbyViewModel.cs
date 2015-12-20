@@ -14,6 +14,7 @@ namespace ArtportalenApp.ViewModels
         private readonly ISiteService _siteService;
         private Command _doneCommand;
         private Command _refreshCommand;
+        private Command _cancelCommand;
 
         public ChooseSiteNearbyViewModel(ISiteService siteService)
         {
@@ -46,6 +47,17 @@ namespace ArtportalenApp.ViewModels
         public Command RefreshCommand
         {
             get { return _refreshCommand ?? (_refreshCommand = new Command(RefreshSites, () => !IsBusy)); }
+        }
+
+        public Command CancelCommand
+        {
+            get
+            {
+                return _cancelCommand ?? (_cancelCommand = new Command(async obj =>
+                {
+                    await CancelAction();
+                }));
+            }
         }
 
         public bool IsBusy

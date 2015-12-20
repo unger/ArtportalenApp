@@ -97,7 +97,7 @@ namespace ArtportalenApp.ViewModels
             {
                 return _cancelCommand ?? (_cancelCommand = new Command(async obj =>
                 {
-                    await Navigation.PopModalAsync();
+                    await CancelAction();
                 }));
             }
         }

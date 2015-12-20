@@ -8,6 +8,7 @@ using ArtportalenApp.Startup;
 using Foundation;
 using Parse;
 using TestFairyLib;
+using TK.CustomMap.iOSUnified;
 using UIKit;
 using Xamarin;
 

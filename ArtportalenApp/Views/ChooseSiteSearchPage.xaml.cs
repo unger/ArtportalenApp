@@ -16,12 +16,5 @@ namespace ArtportalenApp.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            SearchBarElement.Focus();
-
-            base.OnAppearing();
-        }
     }
 }

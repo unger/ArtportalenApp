@@ -66,9 +66,9 @@ namespace ArtportalenApp.ViewModels
                             {
                                 vm.CurrentReport = report;
                             },
-                            done: vm =>
+                            done: async vm =>
                             {
-                                vm.Navigation.PopAsync();
+                                await vm.Navigation.PopAsync();
                                 RefreshReports();
                             });
                     }
@@ -103,9 +103,9 @@ namespace ArtportalenApp.ViewModels
                         {
                             vm.CurrentReport = new Report();
                         },
-                        done: vm =>
+                        done: async vm =>
                         {
-                            vm.Navigation.PopAsync();
+                            await vm.Navigation.PopAsync();
                             RefreshReports();
                         });
                 }));

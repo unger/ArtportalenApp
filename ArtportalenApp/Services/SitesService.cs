@@ -20,6 +20,7 @@ namespace ArtportalenApp.Services
         private readonly IGeolocator _geolocator;
         private readonly ISiteStorage _siteStorage;
         private readonly IArtportalenService _artportalenService;
+        private Position _lastPosition;
 
         public SiteService(IGeolocator geolocator, ISiteStorage siteStorage, IArtportalenService artportalenService)
         {
@@ -33,29 +34,49 @@ namespace ArtportalenApp.Services
             return await _siteStorage.GetSites(searchText);
         }
 
-        public async Task<IList<Site>> GetNearBySites()
+        public async Task<Position> GetLocation(bool fetch = false)
         {
-            Position position;
+            if (_lastPosition == null || fetch)
+            {
+                return await FetchLocation();
+            }
+
+            return _lastPosition;
+        }
+
+        private async Task<Position> FetchLocation()
+        {
             try
             {
-                position = await _geolocator.GetPositionAsync(timeoutMilliseconds: 10000);
+                _lastPosition = await _geolocator.GetPositionAsync(timeoutMilliseconds: 10000);
             }
             catch (Exception)
             {
-                position = null;
             }
+
+            return _lastPosition;
+        }
+
+        public async Task<IList<Site>> GetNearBySites()
+        {
+            var position = await FetchLocation();
 
             if (position != null)
             {
-                if (_artportalenService.HasAccount)
-                {
-                    return await _artportalenService.GetNearbySites(position.Latitude, position.Longitude);
-                }
-
-                return await _siteStorage.GetNearbySites(position.Latitude, position.Longitude);
+                return await GetNearBySites(position.Latitude, position.Longitude);
             }
 
             return new List<Site>();
+        }
+
+        public async Task<IList<Site>> GetNearBySites(double latitude, double longitude, double distanceRadians = 0)
+        {
+            if (_artportalenService.HasAccount)
+            {
+                return await _artportalenService.GetNearbySites(latitude, longitude, distanceRadians);
+            }
+
+            return await _siteStorage.GetNearbySites(latitude, longitude, distanceRadians);
         }
     }
 }

@@ -12,9 +12,16 @@
              x:TypeArguments="vms:ChooseSiteNearbyViewModel"
              x:Class="ArtportalenApp.Views.ChooseSiteNearbyPage"
              x:Name="CurrentPage"
-             Title="{Binding Title}"
-             Icon="location.png">
-  
+             Title="{Binding Title}">
+
+  <Page.Icon>
+    <OnPlatform x:TypeArguments="FileImageSource" iOS="location.png" />
+  </Page.Icon>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Avbryt" Command="{Binding CancelCommand}"/>
+  </ContentPage.ToolbarItems>
+
   <StackLayout>
     
     <ListView ItemsSource="{Binding Sites}" 

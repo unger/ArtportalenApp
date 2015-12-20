@@ -6,7 +6,8 @@ namespace ArtportalenApp.ViewModels
 {
     public abstract class ViewModelBase : NotifyPropertyChangedBase, IViewModel
     {
-        private Func<Task> doneAction; 
+        private Func<Task> doneAction;
+        private Func<Task> cancelAction; 
 
         public string Title
         {
@@ -36,11 +37,24 @@ namespace ArtportalenApp.ViewModels
             doneAction = action;
         }
 
+        public void SetCancelAction(Func<Task> action)
+        {
+            cancelAction = action;
+        }
+
         public async Task DoneAction()
         {
             if (doneAction != null)
             {
                 await doneAction();
+            }
+        }
+
+        public async Task CancelAction()
+        {
+            if (cancelAction != null)
+            {
+                await cancelAction();
             }
         }
 

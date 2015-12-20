@@ -7,11 +7,11 @@ namespace ArtportalenApp.Interfaces
 {
     public interface INavigationService
     {
-        Task PushAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null)
+        Task PushAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null, Action<TViewModel> cancel = null)
             where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel;
 
-        Task PushModalAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null)
+        Task PushModalAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null, Action<TViewModel> cancel = null)
             where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel;
 

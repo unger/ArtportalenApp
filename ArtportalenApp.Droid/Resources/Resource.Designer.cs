@@ -26,6 +26,7 @@ namespace ArtportalenApp.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::ModernHttpClient.Resource.String.library_name = global::ArtportalenApp.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::ArtportalenApp.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::ArtportalenApp.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::ArtportalenApp.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -4344,6 +4345,9 @@ namespace ArtportalenApp.Droid
 			
 			// aapt resource value: 0x7f05001d
 			public const int common_signin_button_text_long = 2131034141;
+			
+			// aapt resource value: 0x7f050042
+			public const int library_name = 2131034178;
 			
 			// aapt resource value: 0x7f050022
 			public const int mr_media_route_button_content_description = 2131034146;

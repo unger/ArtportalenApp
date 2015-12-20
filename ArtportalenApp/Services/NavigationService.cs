@@ -21,20 +21,34 @@ namespace ArtportalenApp.Services
 
         public event PopEventHandler Pop;
 
-        public Task PushAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null)
+        public Task PushAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null, Action<TViewModel> cancel = null)
             where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel
         {
-            var page = _pageFactory.CreatePage<TPage, TViewModel>(init, done);
+            if (cancel == null)
+            {
+                cancel = async vm =>
+                {
+                    await vm.Navigation.PopAsync();
+                };
+            }
+            var page = _pageFactory.CreatePage<TPage, TViewModel>(init, done, cancel);
 
             return _navigation.PushAsync(page);
         }
 
-        public Task PushModalAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null)
+        public Task PushModalAsync<TPage, TViewModel>(Action<TViewModel> init = null, Action<TViewModel> done = null, Action<TViewModel> cancel = null)
             where TPage : Page, IPage<TViewModel>, new()
             where TViewModel : class, IViewModel
         {
-            var page = _pageFactory.CreatePage<TPage, TViewModel>(init, done);
+            if (cancel == null)
+            {
+                cancel = async vm =>
+                {
+                    await vm.Navigation.PopModalAsync();
+                };
+            }
+            var page = _pageFactory.CreatePage<TPage, TViewModel>(init, done, cancel);
 
             if (page is NavigationPage)
             {

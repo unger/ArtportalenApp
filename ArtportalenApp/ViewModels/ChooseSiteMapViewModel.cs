@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 using ArtportalenApp.Interfaces;
+using ArtportalenApp.Maps;
 using ArtportalenApp.Models;
-using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
+using Position = Xamarin.Forms.Maps.Position;
 
 namespace ArtportalenApp.ViewModels
 {
@@ -14,16 +18,26 @@ namespace ArtportalenApp.ViewModels
         private readonly ISiteService _siteService;
         private Command _doneCommand;
         private Command _refreshCommand;
+        private Command _cancelCommand;
 
         public ChooseSiteMapViewModel(ISiteService siteService)
         {
             _siteService = siteService;
             Title = "Karta";
+            VisibleRegion = MapSpan.FromCenterAndRadius(new Position(57.6, 11.9), new Distance(5000));
         }
 
         public override void Appearing()
         {
+            base.Appearing();
+            IsActive = true;
             Device.BeginInvokeOnMainThread(RefreshSites);
+        }
+
+        public override void Disappearing()
+        {
+            base.Disappearing();
+            IsActive = false;
         }
 
         public Command DoneCommand
@@ -48,9 +62,75 @@ namespace ArtportalenApp.ViewModels
             get { return _refreshCommand ?? (_refreshCommand = new Command(RefreshSites, () => !IsBusy)); }
         }
 
+        public Command CancelCommand
+        {
+            get
+            {
+                return _cancelCommand ?? (_cancelCommand = new Command(async obj =>
+                {
+                    await CancelAction();
+                }));
+            }
+        }
+
         public bool IsBusy
         {
             get { return GetProperty<bool>(); }
+            set { SetProperty(value); }
+        }
+
+        public bool IsActive
+        {
+            get { return GetProperty<bool>(); }
+            set { SetProperty(value); }
+        }
+
+        public Position MapCenter
+        {
+            get { return GetProperty<Position>(); }
+            set
+            {
+                var oldCenter = MapCenter;
+                var distance = MapHelper.CalculateDistance(oldCenter.Latitude, oldCenter.Longitude, value.Latitude, value.Longitude, 'K');
+
+                if (distance > 1)
+                {
+                    SetProperty(value);
+                    Device.BeginInvokeOnMainThread(RefreshSites);
+                }
+            }
+        }
+
+        public Distance Radius
+        {
+            get { return GetProperty<Distance>(); }
+            set
+            {
+                if (value != Radius)
+                {
+                    SetProperty(value);
+                    Device.BeginInvokeOnMainThread(RefreshSites);
+                }
+            }
+        }
+
+        public MapSpan VisibleRegion
+        {
+            get { return GetProperty<MapSpan>(); }
+            set
+            {
+                SetProperty(value);
+                if (value != null)
+                {
+                    MapCenter = value.Center;
+                    Radius = value.Radius;
+                }
+            }
+        }
+
+        public ObservableCollection<ILocationViewModel> Pins
+        {
+            get { return GetProperty<ObservableCollection<ILocationViewModel>>(); }
             set { SetProperty(value); }
         }
 
@@ -71,7 +151,7 @@ namespace ArtportalenApp.ViewModels
 
         private async void RefreshSites()
         {
-            if (IsBusy)
+            if (IsBusy || !IsActive)
             {
                 return;
             }
@@ -80,8 +160,26 @@ namespace ArtportalenApp.ViewModels
 
             try
             {
-                var sites = await _siteService.GetNearBySites();
+                var sites = await _siteService.GetNearBySites(MapCenter.Latitude, MapCenter.Longitude, Math.Max(VisibleRegion.LatitudeDegrees, VisibleRegion.LongitudeDegrees) / 2);
                 Sites = new ObservableCollection<Site>(sites);
+
+                var pins = new List<ILocationViewModel>();
+                foreach (var site in sites)
+                {
+                    var localSite = site;
+                    pins.Add(new LocationViewModel
+                    {
+                        Key = site.SiteId.ToString(),
+                        Title = site.SiteName,
+                        Latitude = site.Latitude,
+                        Longitude = site.Longitude,
+                        Description = string.Format("{0}", site.IsPublic.HasValue ? site.IsPublic.Value ? "Allmän" : "Privat" : string.Empty),
+                        Command = new Command(() => DoneCommand.Execute(localSite))
+                    });
+                }
+
+                //UpdatePins(pins);
+                Pins = new ObservableCollection<ILocationViewModel>(pins);
             }
             finally
             {

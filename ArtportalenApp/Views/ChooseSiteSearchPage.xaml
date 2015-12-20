@@ -12,9 +12,16 @@
              x:TypeArguments="vms:ChooseSiteSearchViewModel"
              x:Class="ArtportalenApp.Views.ChooseSiteSearchPage"
              x:Name="CurrentPage"
-             Title="{Binding Title}"
-             Icon="search.png">
-  
+             Title="{Binding Title}">
+
+  <Page.Icon>
+    <OnPlatform x:TypeArguments="FileImageSource" iOS="search.png" />
+  </Page.Icon>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Avbryt" Command="{Binding CancelCommand}"/>
+  </ContentPage.ToolbarItems>
+
   <StackLayout>
     
     <SearchBar x:Name="SearchBarElement" Placeholder="Sök" Text="{Binding SearchText}" VerticalOptions="Center" />

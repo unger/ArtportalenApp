@@ -14,6 +14,6 @@ namespace ArtportalenApp.Interfaces
         Task SaveCredential(string username, string password);
         void RemoveCredential();
         NetworkCredential GetCredential();
-        Task<IList<Site>> GetNearbySites(double latitude, double longitude);
+        Task<IList<Site>> GetNearbySites(double latitude, double longitude, double distanceRadians = 0);
     }
 }

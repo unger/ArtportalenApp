@@ -156,11 +156,11 @@ namespace ArtportalenApp.ViewModels
                 {
                     await Navigation.PushModalAsync<ArtportalenLogInPage, ArtportalenLogInViewModel>(done: async vm =>
                     {
-                        await Navigation.PopModalAsync();
-
                         await _artportalenService.SaveCredential(vm.Username, vm.Password);
                         IsConnectedArtportalen = _artportalenService.HasAccount;
                         IsNotConnectedArtportalen = !_artportalenService.HasAccount;
+
+                        await Navigation.PopModalAsync();
                     });
                 }));
             }

@@ -14,7 +14,11 @@ namespace ArtportalenApp.Interfaces
 
         void SetDoneAction(Func<Task> action);
 
+        void SetCancelAction(Func<Task> action);
+
         Task DoneAction();
+
+        Task CancelAction();
 
         INavigationService Navigation { get; set; }
 

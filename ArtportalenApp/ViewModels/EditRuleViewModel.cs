@@ -70,12 +70,12 @@ namespace ArtportalenApp.ViewModels
                         {
                             vm.SetSelectedTaxons(CurrentRule.Taxons);
                         },
-                        done: vm =>
+                        done: async vm =>
                         {
-                            vm.Navigation.PopAsync();
-
                             var taxons = vm.Taxons.Where(t => t.Selected).Select(t => t.Name);
                             CurrentRule.Taxons = taxons.ToArray();
+
+                            await vm.Navigation.PopAsync();
                         });
                 }));
             }
@@ -92,11 +92,10 @@ namespace ArtportalenApp.ViewModels
                         {
                             vm.SetValues(_municipalityService.GetAll().Select(x => x.Name).ToArray(), CurrentRule.Kommuner);
                         },
-                        done: vm =>
+                        done: async vm =>
                         {
-                            vm.Navigation.PopAsync();
-
                             CurrentRule.Kommuner = vm.AllValues.Where(t => t.Selected).Select(t => t.Name).ToArray();
+                            await vm.Navigation.PopAsync();
                         });
                 }));
             }
@@ -113,10 +112,10 @@ namespace ArtportalenApp.ViewModels
                         {
                             vm.SetValues(_provinceService.GetAll().Select(x => x.Name).ToArray(), CurrentRule.Landskap);
                         },
-                        done: vm =>
+                        done: async vm =>
                         {
-                            vm.Navigation.PopAsync();
                             CurrentRule.Landskap = vm.AllValues.Where(t => t.Selected).Select(t => t.Name).ToArray();
+                            await vm.Navigation.PopAsync();
                         });
                 }));
             }

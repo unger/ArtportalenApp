@@ -41,6 +41,17 @@ namespace ArtportalenApp.Factories
                 return Task.FromResult(0);
             });
 
+            vm.SetCancelAction(() =>
+            {
+                if (cancel != null)
+                {
+                    cancel(vm);
+                }
+
+                return Task.FromResult(0);
+            });
+
+            /*
             vm.Navigation.Pop += (sender, args) =>
             {
                 if (cancel != null)
@@ -50,7 +61,7 @@ namespace ArtportalenApp.Factories
                         cancel(vm);
                     }
                 }
-            };
+            };*/
 
             page.BindingContext = page.ViewModel = vm;
 

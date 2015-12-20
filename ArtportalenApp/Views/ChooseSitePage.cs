@@ -12,26 +12,46 @@ namespace ArtportalenApp.Views
         {
             var pageFactory = AutofacContainer.Container.Resolve<IPageFactory>();
 
-            Children.Add(pageFactory.CreatePage<ChooseSiteLatestPage, ChooseSiteLatestViewModel>(done: async vm =>
-            {
-                ViewModel.SelectedSite = vm.SelectedSite;
-                await ViewModel.DoneAction();
-            }));
-            Children.Add(pageFactory.CreatePage<ChooseSiteNearbyPage, ChooseSiteNearbyViewModel>(done: async vm =>
-            {
-                ViewModel.SelectedSite = vm.SelectedSite;
-                await ViewModel.DoneAction();
-            }));
-            Children.Add(pageFactory.CreatePage<ChooseSiteSearchPage, ChooseSiteSearchViewModel>(done: async vm =>
-            {
-                ViewModel.SelectedSite = vm.SelectedSite;
-                await ViewModel.DoneAction();
-            }));
-            Children.Add(pageFactory.CreatePage<ChooseSiteMapPage, ChooseSiteMapViewModel>(done: async vm =>
-            {
-                ViewModel.SelectedSite = vm.SelectedSite;
-                await ViewModel.DoneAction();
-            }));
+            Children.Add(pageFactory.CreatePage<ChooseSiteLatestPage, ChooseSiteLatestViewModel>(
+                done: async vm =>
+                {
+                    ViewModel.SelectedSite = vm.SelectedSite;
+                    await ViewModel.DoneAction();
+                },
+                cancel: async vm =>
+                {
+                    await ViewModel.CancelAction();
+                }));
+            Children.Add(pageFactory.CreatePage<ChooseSiteNearbyPage, ChooseSiteNearbyViewModel>(
+                done: async vm =>
+                {
+                    ViewModel.SelectedSite = vm.SelectedSite;
+                    await ViewModel.DoneAction();
+                },
+                cancel: async vm =>
+                {
+                    await ViewModel.CancelAction();
+                }));
+            Children.Add(pageFactory.CreatePage<ChooseSiteSearchPage, ChooseSiteSearchViewModel>(
+                done: async vm =>
+                {
+                    ViewModel.SelectedSite = vm.SelectedSite;
+                    await ViewModel.DoneAction();
+                },
+                cancel: async vm =>
+                {
+                    await ViewModel.CancelAction();
+                }));
+            Children.Add(pageFactory.CreatePage<ChooseSiteMapPage, ChooseSiteMapViewModel>(
+                done: async vm =>
+                {
+                    ViewModel.SelectedSite = vm.SelectedSite;
+                    await ViewModel.DoneAction();
+                },
+                cancel: async vm =>
+                {
+                    await ViewModel.CancelAction();
+                }));
         }
 
         public ChooseSiteViewModel ViewModel { get; set; }

@@ -9,12 +9,13 @@ namespace ArtportalenApp.Storage
 {
     public class SiteStorage : ISiteStorage
     {
-        public async Task<IList<Site>> GetNearbySites(double latitude, double longitude)
+        public async Task<IList<Site>> GetNearbySites(double latitude, double longitude, double distanceRadians = 0)
         {
+            if (distanceRadians == 0) distanceRadians = 0.5;
             var pos = new ParseGeoPoint(latitude, longitude);
             var sitesQuery = new ParseQuery<ApParseSite>()
-                .WhereNear("location", pos)
-                .Limit(25);
+                .WhereWithinDistance("location", pos, new ParseGeoDistance(distanceRadians))
+                .Limit(100);
 
             return (await sitesQuery.FindAsync())
                 .Select(s => ConvertToSite(s, pos))
@@ -24,13 +25,13 @@ namespace ArtportalenApp.Storage
 
         public async Task<IList<Site>> GetSites(string searchText, double latitude = 0, double longitude = 0)
         {
-            var lowerSearchText = searchText.ToLower();
             var sitesQuery = new ParseQuery<ApParseSite>()
                 .OrderByDescending(x => x.UseCount)
-                .Limit(25);
+                .Limit(100);
 
             if (!string.IsNullOrEmpty(searchText))
             {
+                var lowerSearchText = searchText.ToLower();
                 sitesQuery = sitesQuery.Where(s => s.Search.Contains(lowerSearchText));
             }
             else
