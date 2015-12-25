@@ -59,7 +59,7 @@ namespace ArtportalenApp.Services
 
         public async Task<IList<Site>> GetNearbySites(double latitude, double longitude, double distanceRadians)
         {
-            var distance = distanceRadians*10000;
+            var distance = distanceRadians*100000;
             if (distance == 0) distance = 5000;
             var pos = new WGS84Position(latitude, longitude).ToWebMercator();
             var sw = new WebMercatorPosition(pos.Latitude - distance, pos.Longitude - distance);
@@ -82,6 +82,8 @@ namespace ArtportalenApp.Services
                 });
             });
 
+            var webMercCalc = new WebMercatorCalculator();
+
             return sites.Select(s =>
                 new Site
                 {
@@ -89,6 +91,8 @@ namespace ArtportalenApp.Services
                     SiteName = s.SiteName,
                     SiteYCoord = s.SiteYCoord,
                     SiteXCoord = s.SiteXCoord,
+                    Latitude = webMercCalc.YToLatitude(s.SiteYCoord),
+                    Longitude = webMercCalc.XToLongitude(s.SiteXCoord),
                     Kommun = s.Kommun,
                     DistanceKm = GetDistanceKm(pos, new WebMercatorPosition(s.SiteYCoord, s.SiteXCoord)),
                 }
