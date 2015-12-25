@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+             xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
+
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
-             xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
              d:DataContext="{d:DesignInstance vms:ChooseSiteLatestViewModel}"
 
-             Title="{Binding Title}"
              x:Class="ArtportalenApp.Views.ChooseSiteLatestPage"
              x:TypeArguments="vms:ChooseSiteLatestViewModel"
-             x:Name="CurrentPage">
+             x:Name="CurrentPage"
+             Title="{Binding Title}">
 
   <Page.Icon>
     <OnPlatform x:TypeArguments="FileImageSource" iOS="tag.png" />
