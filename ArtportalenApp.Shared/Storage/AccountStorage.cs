@@ -45,11 +45,15 @@ namespace ArtportalenApp.Storage
                     }
                     if (t.IsFaulted)
                     {
-                        throw t.Exception;
+                        var handled = ParseErrorHandler.HandleParseError(t.Exception.InnerException as ParseException);
+                        if (!handled)
+                        {
+                            throw t.Exception.InnerException;
+                        }
                     }
                     _notificationCenter.Send(NotificationKeys.CurrentUserChanged, _currentUser);
                     await AssociateInstallationWithUser();
-                });
+                }).Unwrap();
         }
 
         public async Task<User> LogIn(string email, string password)

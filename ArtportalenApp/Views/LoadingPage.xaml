@@ -14,8 +14,46 @@
              x:TypeArguments="vms:LoadingViewModel"
              x:Name="CurrentPage">
 
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="colorPrimary">#4cae4c</Color>
+
+      <Style x:Key="button" TargetType="Button">
+        <Setter Property="BorderWidth" Value="1"></Setter>
+        <Setter Property="BorderColor" Value="#cccccc"></Setter>
+        <Setter Property="TextColor" Value="#ffffff"></Setter>
+      </Style>
+
+      <Style x:Key="buttonPrimary" TargetType="Button" BasedOn="{StaticResource button}">
+        <Setter Property="BorderColor" Value="{StaticResource colorPrimary}"></Setter>
+        <Setter Property="BackgroundColor" Value="{StaticResource colorPrimary}"></Setter>
+      </Style>
+
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+
   <AbsoluteLayout>
-    <ActivityIndicator IsRunning="True" HorizontalOptions="Center" VerticalOptions="Center" />
-  </AbsoluteLayout>
+
+    <Image AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill">
+      <Image.Source>
+        <FileImageSource File="bonelli.jpg"></FileImageSource>
+      </Image.Source>
+    </Image>
+
+    
+    <Grid AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" AbsoluteLayout.LayoutFlags="All">
+      <StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
+          <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" />
+        </StackLayout>
+        <StackLayout Padding="10" Spacing="10">
+          <Button Text="Skapa konto" Style="{StaticResource buttonPrimary}" Command="{Binding SignUpCommand}" />
+          <Button Text="Logga in" Style="{StaticResource button}" Command="{Binding LogInCommand}" />
+        </StackLayout>
+      </StackLayout>
+    </Grid>
+
+  </AbsoluteLayout>  
 
 </views:ContentPage>

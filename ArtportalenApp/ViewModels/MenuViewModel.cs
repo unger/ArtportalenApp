@@ -95,7 +95,7 @@ namespace ArtportalenApp.ViewModels
                 return _logOutCommand ?? (_logOutCommand = new Command(async () =>
                 {
                     await _accountStorage.LogOut();
-                    Navigation.ResetMainPage<LogInPage, LogInViewModel>(true);
+                    Navigation.ResetMainPage<LoadingPage, LoadingViewModel>(true);
                 }));
             }
         }

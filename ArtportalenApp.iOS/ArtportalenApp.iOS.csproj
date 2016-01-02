@@ -129,6 +129,10 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Parse.iOS, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\parse.1.6.1\lib\Xamarin.iOS10\Parse.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -147,9 +151,6 @@
     </Reference>
     <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Parse.iOS, Version=1.6.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Parse.1.6.2\lib\Xamarin.iOS10\Parse.iOS.dll</HintPath>
     </Reference>
     <Reference Include="PLCrashReporterUnifiedBinding, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Insights.1.11.3\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
@@ -242,6 +243,7 @@
     <BundleResource Include="Resources\ic_place.png" />
     <BundleResource Include="Resources\ic_place%402x.png" />
     <BundleResource Include="Resources\ic_place%403x.png" />
+    <BundleResource Include="Resources\bonelli.jpg" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">

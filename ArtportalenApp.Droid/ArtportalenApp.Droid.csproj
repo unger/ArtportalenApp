@@ -83,8 +83,8 @@
       <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Parse.Android, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Parse.1.6.2\lib\MonoAndroid\Parse.Android.dll</HintPath>
+    <Reference Include="Parse.Android, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Parse.1.6.1\lib\MonoAndroid\Parse.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.CurrentActivity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -259,6 +259,9 @@
     <AndroidResource Include="Resources\drawable\tag.png" />
     <AndroidResource Include="Resources\drawable\trash.png" />
     <AndroidResource Include="Resources\drawable\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bonelli.jpg" />
   </ItemGroup>
   <Import Project="..\ArtportalenApp.Shared\ArtportalenApp.Shared.projitems" Label="Shared" Condition="Exists('..\ArtportalenApp.Shared\ArtportalenApp.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

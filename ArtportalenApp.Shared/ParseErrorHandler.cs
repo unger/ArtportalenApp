@@ -35,7 +35,7 @@ namespace ArtportalenApp
             Device.BeginInvokeOnMainThread(() =>
             {
                 var pageFactory = AutofacContainer.Container.Resolve<IPageFactory>();
-                Xamarin.Forms.Application.Current.MainPage = pageFactory.CreatePage<LogInPage, LogInViewModel>();
+                Xamarin.Forms.Application.Current.MainPage = new NavigationPage(pageFactory.CreatePage<LoadingPage, LoadingViewModel>());
             });
         }
     }

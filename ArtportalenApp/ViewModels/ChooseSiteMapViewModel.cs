@@ -19,12 +19,13 @@ namespace ArtportalenApp.ViewModels
         private Command _doneCommand;
         private Command _refreshCommand;
         private Command _cancelCommand;
+        private Plugin.Geolocator.Abstractions.Position firstLocation = null;
 
         public ChooseSiteMapViewModel(ISiteService siteService)
         {
             _siteService = siteService;
             Title = "Karta";
-            VisibleRegion = MapSpan.FromCenterAndRadius(new Position(57.6, 11.9), new Distance(5000));
+            VisibleRegion = MapSpan.FromCenterAndRadius(new Position(57.6, 11.9), new Distance(2000));
         }
 
         public override void Appearing()
@@ -157,6 +158,14 @@ namespace ArtportalenApp.ViewModels
             }
 
             IsBusy = true;
+
+            if (firstLocation == null)
+            {
+                firstLocation = await _siteService.GetLocation();
+                VisibleRegion = MapSpan.FromCenterAndRadius(new Position(firstLocation.Latitude, firstLocation.Longitude), VisibleRegion.Radius);
+                IsBusy = false;
+                return;
+            }
 
             try
             {

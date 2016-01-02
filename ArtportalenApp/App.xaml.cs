@@ -21,16 +21,10 @@ namespace ArtportalenApp
 
             MainPage = new NavigationPage(pageFactory.CreatePage<LoadingPage, LoadingViewModel>());
 
-
-
             InitializeComponent();
 
             // The root page of your application
-            if (!currentUser.IsAutenticated)
-            {
-                MainPage = new NavigationPage(pageFactory.CreatePage<LogInPage, LogInViewModel>());
-            }
-            else
+            if (currentUser.IsAutenticated)
             {
                 MainPage = pageFactory.CreatePage<MainPage, MainViewModel>();
             }

@@ -13,12 +13,15 @@ namespace ArtportalenApp.ViewModels
     {
         private readonly IAccountStorage _accountStorage;
         private readonly INotificationCenter _notificationCenter;
+        private readonly ICurrentUser _currentUser;
         private Command _signUpCommand;
 
-        public SignUpViewModel(IAccountStorage accountStorage, INotificationCenter notificationCenter)
+        public SignUpViewModel(IAccountStorage accountStorage, INotificationCenter notificationCenter,
+            ICurrentUser currentUser)
         {
             _accountStorage = accountStorage;
             _notificationCenter = notificationCenter;
+            _currentUser = currentUser;
         }
 
         public string Fullname
@@ -47,20 +50,30 @@ namespace ArtportalenApp.ViewModels
 
         public Command SignUpCommand
         {
-            get { return _signUpCommand ?? (_signUpCommand = new Command(async () =>
+            get
             {
-                ErrorMessage = null;
-                try
+                return _signUpCommand ?? (_signUpCommand = new Command(async () =>
                 {
-                    await _accountStorage.SignUp(Fullname, Email, Password);
+                    ErrorMessage = null;
+                    try
+                    {
+                        await _accountStorage.SignUp(Fullname, Email, Password);
 
-                    Navigation.ResetMainPage<MainPage, MainViewModel>(false);
-                }
-                catch (Exception e)
-                {
-                    ErrorMessage = e.Message;
-                }
-            })); }   
+                        if (_currentUser.IsAutenticated)
+                        {
+                            Navigation.ResetMainPage<MainPage, MainViewModel>(false);
+                        }
+                        else
+                        {
+                            ErrorMessage = "Något gick fel försök igen";
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ErrorMessage = e.Message;
+                    }
+                }));
+            }
         }
     }
 }

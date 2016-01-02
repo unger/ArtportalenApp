@@ -10,15 +10,14 @@
       <Style x:Key="button" TargetType="Button">
         <Setter Property="BorderWidth" Value="1"></Setter>
         <Setter Property="BorderColor" Value="#cccccc"></Setter>
-        <Setter Property="TextColor" Value="#000000"></Setter>
+        <Setter Property="TextColor" Value="#ffffff"></Setter>
       </Style>
 
       <Style x:Key="buttonPrimary" TargetType="Button" BasedOn="{StaticResource button}">
-        <Setter Property="BorderColor" Value="#4cae4c"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource colorPrimary}"></Setter>
         <Setter Property="BackgroundColor" Value="{StaticResource colorPrimary}"></Setter>
-        <Setter Property="TextColor" Value="#ffffff"></Setter>
       </Style>
-      
+
       <Style TargetType="Entry">
         <Setter Property="FontSize" Value="Medium"></Setter>
         <Setter Property="PlaceholderColor" Value="#aaaaaa"></Setter>

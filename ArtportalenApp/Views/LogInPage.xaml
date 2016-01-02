@@ -32,7 +32,6 @@
 
     <StackLayout VerticalOptions="FillAndExpand">
       <Button Text="Logga in" Command="{Binding LogInCommand}" Style="{StaticResource buttonPrimary}" />
-      <Button Text="Skapa konto" Command="{Binding SignUpCommand}" Style="{StaticResource button}" />
     </StackLayout>
 
   </StackLayout>
