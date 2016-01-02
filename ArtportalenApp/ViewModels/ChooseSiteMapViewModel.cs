@@ -25,7 +25,7 @@ namespace ArtportalenApp.ViewModels
         {
             _siteService = siteService;
             Title = "Karta";
-            VisibleRegion = MapSpan.FromCenterAndRadius(new Position(57.6, 11.9), new Distance(2000));
+            VisibleRegion = MapSpan.FromCenterAndRadius(new Position(57.6, 11.9), new Distance(1500));
         }
 
         public override void Appearing()
