@@ -59,7 +59,7 @@ namespace ArtportalenApp.Services
 
         public async Task<IList<Site>> GetNearbySites(double latitude, double longitude, double distanceRadians)
         {
-            var distance = distanceRadians*100000;
+            var distance = distanceRadians*7500000;
             if (distance == 0) distance = 5000;
             var pos = new WGS84Position(latitude, longitude).ToWebMercator();
             var sw = new WebMercatorPosition(pos.Latitude - distance, pos.Longitude - distance);

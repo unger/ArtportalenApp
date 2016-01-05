@@ -41,22 +41,25 @@ namespace ArtportalenApp
             builder.RegisterType<EditRuleViewModel>();
             builder.RegisterType<ChooseTaxonsViewModel>();
             builder.RegisterType<ChooseSingleTaxonViewModel>();
+            builder.RegisterType<ChooseValuesViewModel>();
+
+            builder.RegisterType<ChooseSiteViewModel>();
             builder.RegisterType<ChooseSiteSearchViewModel>();
             builder.RegisterType<ChooseSiteNearbyViewModel>();
             builder.RegisterType<ChooseSiteLatestViewModel>();
             builder.RegisterType<ChooseSiteMapViewModel>();
-            builder.RegisterType<ChooseSiteViewModel>();
-            builder.RegisterType<ChooseValuesViewModel>();
+            
             builder.RegisterType<SessionsViewModel>();
             builder.RegisterType<SitesViewModel>();
             builder.RegisterType<ReportsViewModel>();
             builder.RegisterType<EditReportViewModel>();
             builder.RegisterType<ArtportalenLogInViewModel>();
 
+            builder.RegisterType<SiteDetailViewModel>();
+            builder.RegisterType<SiteDetailInfoViewModel>();
 
             builder.RegisterType<CreateReportViewModel>();
             builder.RegisterType<LoadingViewModel>();
-            
 
             builder.Register(x => CrossDeviceInfo.Current).As<IDeviceInfo>();
             builder.Register(x => CrossGeolocator.Current).As<IGeolocator>();

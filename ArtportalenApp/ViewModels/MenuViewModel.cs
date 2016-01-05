@@ -130,7 +130,16 @@ namespace ArtportalenApp.ViewModels
             {
                 return _sitesCommand ?? (_sitesCommand = new Command(() =>
                 {
-                    MasterNavigation.SetDetail<SitesPage, SitesViewModel>();
+                    MasterNavigation.SetDetail<ChooseSitePage, ChooseSiteViewModel>(
+                        done: async vm =>
+                        {
+                            await vm.Navigation.PushAsync<SiteDetailPage, SiteDetailViewModel>(
+                                init: siteVm =>
+                                {
+                                    siteVm.SelectedSite = vm.SelectedSite;
+                                });
+                        });
+
                 }));
             }
         }

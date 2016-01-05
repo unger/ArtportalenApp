@@ -162,14 +162,20 @@ namespace ArtportalenApp.ViewModels
             if (firstLocation == null)
             {
                 firstLocation = await _siteService.GetLocation();
-                VisibleRegion = MapSpan.FromCenterAndRadius(new Position(firstLocation.Latitude, firstLocation.Longitude), VisibleRegion.Radius);
-                IsBusy = false;
-                return;
+                if (firstLocation != null)
+                {
+                    VisibleRegion = MapSpan.FromCenterAndRadius(new Position(firstLocation.Latitude, firstLocation.Longitude), VisibleRegion.Radius);
+                    IsBusy = false;
+                    return;
+                }
             }
 
             try
             {
-                var sites = await _siteService.GetNearBySites(MapCenter.Latitude, MapCenter.Longitude, Math.Max(VisibleRegion.LatitudeDegrees, VisibleRegion.LongitudeDegrees) / 2);
+                var distanceRadians =
+                    DegreesToRadians(Math.Max(VisibleRegion.LatitudeDegrees, VisibleRegion.LongitudeDegrees)/2);
+
+                var sites = await _siteService.GetNearBySites(MapCenter.Latitude, MapCenter.Longitude, distanceRadians);
                 Sites = new ObservableCollection<Site>(sites);
 
                 var pins = new List<ILocationViewModel>();
@@ -194,6 +200,11 @@ namespace ArtportalenApp.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private double DegreesToRadians(double degrees)
+        {
+            return degrees * Math.PI / 180;
         }
     }
 }

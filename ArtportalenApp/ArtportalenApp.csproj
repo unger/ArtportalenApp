@@ -97,6 +97,8 @@
     <Compile Include="ViewModels\ChooseSiteSearchViewModel.cs" />
     <Compile Include="ViewModels\ChooseSiteNearbyViewModel.cs" />
     <Compile Include="ViewModels\ChooseSingleTaxonViewModel.cs" />
+    <Compile Include="ViewModels\SiteDetailInfoViewModel.cs" />
+    <Compile Include="ViewModels\SiteDetailViewModel.cs" />
     <Compile Include="ViewModels\ChooseSiteViewModel.cs" />
     <Compile Include="ViewModels\ChooseValuesViewModel.cs" />
     <Compile Include="ViewModels\ChooseTaxonsViewModel.cs" />
@@ -119,6 +121,10 @@
     <Compile Include="Views\ChooseSiteMapPage.xaml.cs">
       <DependentUpon>ChooseSiteMapPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SiteDetailInfoPage.xaml.cs">
+      <DependentUpon>SiteDetailInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SiteDetailPage.cs" />
     <Compile Include="Views\ChooseSiteSearchPage.xaml.cs">
       <DependentUpon>ChooseSiteSearchPage.xaml</DependentUpon>
     </Compile>
@@ -361,6 +367,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ChooseSiteMapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SiteDetailInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

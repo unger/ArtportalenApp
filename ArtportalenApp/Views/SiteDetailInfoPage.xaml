@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPage
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ArtportalenApp.Views;assembly=ArtportalenApp"
+             xmlns:vms="clr-namespace:ArtportalenApp.ViewModels;assembly=ArtportalenApp"
+
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vms:SiteDetailInfoViewModel}"  
+             
+             x:Class="ArtportalenApp.Views.SiteDetailInfoPage"
+             x:TypeArguments="vms:SiteDetailInfoViewModel"
+             x:Name="CurrentPage"
+             Title="Info">
+
+
+  
+  <StackLayout>
+
+    <TableView Intent="Settings">
+      <TableRoot>
+        <TableSection>
+          <TextCell Text="Namn" Detail="{Binding SelectedSite.SiteName}"></TextCell>
+          <TextCell Text="Kommun" Detail="{Binding SelectedSite.Kommun}"></TextCell>
+          <TextCell Text="Landskap" Detail="{Binding SelectedSite.Landskap}"></TextCell>
+          <TextCell Text="Län" Detail="{Binding SelectedSite.Lan}"></TextCell>
+          <TextCell Text="Församling" Detail="{Binding SelectedSite.Forsamling}"></TextCell>
+          <TextCell Text="Socken" Detail="{Binding SelectedSite.Socken}"></TextCell>
+          <TextCell Text="Latitude" Detail="{Binding SelectedSite.Latitude}"></TextCell>
+          <TextCell Text="Longitude" Detail="{Binding SelectedSite.Longitude}"></TextCell>
+          <TextCell Text="Accuracy" Detail="{Binding SelectedSite.Accuracy}"></TextCell>
+        </TableSection>
+      </TableRoot>
+    </TableView>
+    
+  </StackLayout>
+
+</views:ContentPage>

@@ -17,7 +17,9 @@ namespace ArtportalenApp.Storage
                 .WhereWithinDistance("location", pos, new ParseGeoDistance(distanceRadians))
                 .Limit(100);
 
-            return (await sitesQuery.FindAsync())
+            var sites = await sitesQuery.FindAsync();
+
+            return sites
                 .Select(s => ConvertToSite(s, pos))
                 .OrderByDescending(s => s.DistanceKm)
                 .ToList();

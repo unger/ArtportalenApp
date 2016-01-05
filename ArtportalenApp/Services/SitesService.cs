@@ -50,7 +50,7 @@ namespace ArtportalenApp.Services
             {
                 _lastPosition = await _geolocator.GetPositionAsync(timeoutMilliseconds: 10000);
             }
-            catch (Exception)
+            catch (Exception e)
             {
             }
 
