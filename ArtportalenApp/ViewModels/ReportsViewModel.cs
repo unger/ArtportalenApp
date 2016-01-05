@@ -31,6 +31,7 @@ namespace ArtportalenApp.ViewModels
 
         public override void Appearing()
         {
+            if (IsLoaded) return;
             IsLoaded = true;
             Device.BeginInvokeOnMainThread(RefreshReports);
         }
@@ -98,6 +99,16 @@ namespace ArtportalenApp.ViewModels
             {
                 return _addCommand ?? (_addCommand = new Command(async () =>
                 {
+                    await Navigation.PushModalAsync<CreateReportPage, CreateReportViewModel>(
+                        init: async vm =>
+                        {
+                        },
+                        done: async vm =>
+                        {
+                            RefreshReports();
+                        });
+
+                    /*
                     await Navigation.PushAsync<EditReportPage, EditReportViewModel>(
                         init: vm =>
                         {
@@ -108,6 +119,7 @@ namespace ArtportalenApp.ViewModels
                             await vm.Navigation.PopAsync();
                             RefreshReports();
                         });
+                     */
                 }));
             }
         }
