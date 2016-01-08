@@ -35,11 +35,12 @@
 
   <AbsoluteLayout>
 
+    <!--
     <Image AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill">
       <Image.Source>
         <FileImageSource File="bonelli.jpg"></FileImageSource>
       </Image.Source>
-    </Image>
+    </Image>-->
 
     
     <Grid AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" AbsoluteLayout.LayoutFlags="All">

@@ -28,10 +28,10 @@ namespace ArtportalenApp.Startup
             if (ParseUser.CurrentUser != null)
             {
                 ParseInstallation.CurrentInstallation["user"] = ParseUser.CurrentUser;
+                ParseInstallation.CurrentInstallation.SaveAsync();
             }
-            ParseInstallation.CurrentInstallation.SaveAsync();
 #endif
-            
+
         }
     }
 }
