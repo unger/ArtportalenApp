@@ -55,6 +55,13 @@ namespace ArtportalenApp.iOS
 
             LoadApplication(new App());
 
+            // Newer version of Xamarin Studio and Visual Studio provide the
+            // ENABLE_TEST_CLOUD compiler directive in the Debug configuration,
+            // but not the Release configuration.
+#if ENABLE_TEST_CLOUD
+            Xamarin.Calabash.Start();
+#endif
+
             return base.FinishedLaunching(app, options);
         }
 

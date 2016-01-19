@@ -47,8 +47,8 @@
           <ActivityIndicator IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" />
         </StackLayout>
         <StackLayout Padding="10" Spacing="10">
-          <Button Text="Skapa konto" Style="{StaticResource buttonPrimary}" Command="{Binding SignUpCommand}" />
-          <Button Text="Logga in" Style="{StaticResource button}" Command="{Binding LogInCommand}" />
+          <Button Text="Skapa konto" Style="{StaticResource buttonPrimary}" StyleId="SignUpButton" Command="{Binding SignUpCommand}" />
+          <Button Text="Logga in" Style="{StaticResource button}" StyleId="LogInButton" Command="{Binding LogInCommand}" />
         </StackLayout>
       </StackLayout>
     </Grid>
