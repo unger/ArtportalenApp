@@ -47,7 +47,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>303c2347-3f31-434d-b96c-bc43f2e5168b</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignExtraArgs>
     </CodesignExtraArgs>
   </PropertyGroup>
@@ -71,7 +71,7 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>026921b5-8a8f-42d3-8b5a-e780a1585b6b</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
