@@ -263,7 +263,7 @@
     <AndroidResource Include="Resources\drawable\menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bonelli.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\bonelli.jpg" />
   </ItemGroup>
   <Import Project="..\ArtportalenApp.Shared\ArtportalenApp.Shared.projitems" Label="Shared" Condition="Exists('..\ArtportalenApp.Shared\ArtportalenApp.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
