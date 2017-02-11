@@ -1,6 +1,7 @@
 ﻿{
   "ParseApplicationId":     "[ENTER_VALUE]",
   "ParseDotNetKey":         "[ENTER_VALUE]",
+  "ParseServerUrl":         "[ENTER_VALUE]",
   "XamarinInsightsApiKey":  "[ENTER_VALUE]",
   "TestFairyAppToken":      "[ENTER_VALUE]",
   "ArtportalenAccessKey":   "[ENTER_VALUE]",

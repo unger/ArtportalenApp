@@ -6,6 +6,8 @@
 
         public string ParseDotNetKey { get; set; }
 
+        public string ParseServerUrl { get; set; }
+
         public string XamarinInsightsApiKey { get; set; }
 
         public string TestFairyAppToken { get; set; }

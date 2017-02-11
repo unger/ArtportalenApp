@@ -20,7 +20,14 @@ namespace ArtportalenApp.Startup
             ParseObject.RegisterSubclass<ApParseRule>();
             ParseObject.RegisterSubclass<ApParseTaxon>();
 
-            ParseClient.Initialize(ConfigurationManager.AppSettings.ParseApplicationId, ConfigurationManager.AppSettings.ParseDotNetKey);
+            var config = new ParseClient.Configuration
+            {
+                ApplicationId = ConfigurationManager.AppSettings.ParseApplicationId,
+                WindowsKey = ConfigurationManager.AppSettings.ParseDotNetKey,
+                Server = ConfigurationManager.AppSettings.ParseServerUrl,
+            };
+
+            ParseClient.Initialize(config);
             ParseAnalytics.TrackAppOpenedAsync();
 
 #if __ANDROID__

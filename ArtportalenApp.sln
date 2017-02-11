@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtportalenApp", "ArtportalenApp\ArtportalenApp.csproj", "{CDD5F14D-6AF4-4783-8B87-0BF46843D16F}"
 EndProject
@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtportalenApp.UITest", "Ar
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		ArtportalenApp.Shared\ArtportalenApp.Shared.projitems*{ed8cdf4a-2242-4aa8-a5c0-71f44931193c}*SharedItemsImports = 4
 		ArtportalenApp.Shared\ArtportalenApp.Shared.projitems*{13bf361a-2c77-4f91-af30-e2d89023b204}*SharedItemsImports = 4
 		ArtportalenApp.Shared\ArtportalenApp.Shared.projitems*{baab620e-13d5-4a05-8134-8db823e019b3}*SharedItemsImports = 13
+		ArtportalenApp.Shared\ArtportalenApp.Shared.projitems*{ed8cdf4a-2242-4aa8-a5c0-71f44931193c}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -158,7 +158,6 @@ Global
 		{ED8CDF4A-2242-4AA8-A5C0-71F44931193C}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
 		{ED8CDF4A-2242-4AA8-A5C0-71F44931193C}.Release|x86.ActiveCfg = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
-		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|ARM.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
@@ -170,7 +169,6 @@ Global
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Ad-Hoc|x86.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|Any CPU.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|ARM.ActiveCfg = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|ARM.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|iPhone.ActiveCfg = Release|Any CPU
@@ -182,7 +180,6 @@ Global
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|x86.ActiveCfg = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.AppStore|x86.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|ARM.Build.0 = Debug|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -194,7 +191,6 @@ Global
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Debug|x86.Build.0 = Debug|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Release|ARM.ActiveCfg = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Release|ARM.Build.0 = Release|Any CPU
 		{A2061079-3D94-4C05-B2D9-DB55D0D27ABC}.Release|iPhone.ActiveCfg = Release|Any CPU

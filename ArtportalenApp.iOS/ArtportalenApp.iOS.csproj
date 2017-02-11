@@ -47,7 +47,8 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <CodesignExtraArgs>
     </CodesignExtraArgs>
   </PropertyGroup>
@@ -71,7 +72,8 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
@@ -133,8 +135,8 @@
       <HintPath>..\packages\Xamarin.TestCloud.Agent.0.17.1\lib\Xamarin.iOS10\Calabash.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Parse.iOS, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\parse.1.6.1\lib\Xamarin.iOS10\Parse.iOS.dll</HintPath>
+    <Reference Include="Parse.iOS, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Parse.1.7.0\lib\Xamarin.iOS10\Parse.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
